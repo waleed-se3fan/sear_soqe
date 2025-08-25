@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:x_go/core/theme/app_colors.dart';
-import 'package:x_go/core/utils/app_styles.dart';
+import 'package:sear_soqe/core/theme/app_colors.dart';
+import 'package:sear_soqe/core/utils/app_styles.dart';
 
 class HaveAnAccountWidget extends StatelessWidget {
   const HaveAnAccountWidget({

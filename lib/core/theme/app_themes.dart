@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:x_go/core/app_cubit/app_cubit.dart';
+import 'package:sear_soqe/core/app_cubit/app_cubit.dart';
 import 'app_colors.dart';
 
 class AppTheme {

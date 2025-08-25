@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:x_go/core/common/widgets/custom_btn.dart';
-import 'package:x_go/core/utils/app_styles.dart';
+import 'package:sear_soqe/core/common/widgets/custom_btn.dart';
+import 'package:sear_soqe/core/utils/app_styles.dart';
 
 import '../../../../../core/theme/app_colors.dart';
 

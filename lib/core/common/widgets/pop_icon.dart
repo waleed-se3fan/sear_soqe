@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:x_go/core/theme/app_colors.dart';
+import 'package:sear_soqe/core/theme/app_colors.dart';
 
 class PopIconWidget extends StatelessWidget {
   const PopIconWidget({super.key});

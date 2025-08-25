@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:x_go/core/common/functions/password_visibility_cubit.dart';
-import 'package:x_go/core/common/widgets/custom_text_form_field.dart';
+import 'package:sear_soqe/core/common/functions/password_visibility_cubit.dart';
+import 'package:sear_soqe/core/common/widgets/custom_text_form_field.dart';
 
 class AuthTextField extends StatelessWidget {
   final String label;
