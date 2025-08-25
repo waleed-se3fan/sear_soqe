@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:sear_soqe/splash_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,6 +19,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: SplashScreen(),
+        theme: ThemeData(
+          fontFamily: 'IBMPlexSansArabic',
+          primaryColor: AppColors.primaryColor,
+          scaffoldBackgroundColor: Colors.white,
+        ),
       ),
     );
   }
