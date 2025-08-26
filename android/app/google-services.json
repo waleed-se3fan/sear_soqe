@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "111183349479",
+    "project_id": "sear-3d368",
+    "storage_bucket": "sear-3d368.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111183349479:android:7320b4ab97e848a6188442",
+        "android_client_info": {
+          "package_name": "com.example.sear_soqe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3qjRKEZB9k7NKSCYnjLUO616dpXL8dbg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

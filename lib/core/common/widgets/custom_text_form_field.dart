@@ -21,6 +21,7 @@ class CustomTextFormField extends StatelessWidget {
   final double? verticalPadding;
   final double? horizontalPadding;
   final void Function(String)? onFieldSubmitted;
+  final bool readOnly;
   const CustomTextFormField({
     super.key,
     this.hintText,
@@ -40,6 +41,7 @@ class CustomTextFormField extends StatelessWidget {
     this.verticalPadding,
     this.horizontalPadding,
     this.onFieldSubmitted,
+    this.readOnly = false,
   });
 
   @override
@@ -57,7 +59,7 @@ class CustomTextFormField extends StatelessWidget {
         ),
         hintText: hintText,
 
-        hintStyle: AppStyles.ts14BlackW500.copyWith(color: AppColors.black),
+        hintStyle: AppStyles.ts14BlackW500.copyWith(color: AppColors.greyText),
         fillColor: fillColor ?? AppColors.white,
         filled: true,
         labelText: labelText,
@@ -94,6 +96,7 @@ class CustomTextFormField extends StatelessWidget {
       onChanged: onchanged,
       onFieldSubmitted: onFieldSubmitted,
       maxLines: maxLines,
+      readOnly: readOnly,
     );
   }
 }

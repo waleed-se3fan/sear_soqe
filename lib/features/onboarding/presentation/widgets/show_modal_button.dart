@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
+import 'package:sear_soqe/features/auth/presentation/view/login_view.dart';
+import 'package:sear_soqe/features/auth/presentation/view/register_with_email_view.dart';
+import 'package:sear_soqe/features/auth/presentation/view/register_with_phone_view.dart';
 
 showModalBottom(BuildContext context) {
   return showModalBottomSheet(
@@ -35,7 +38,14 @@ showModalBottom(BuildContext context) {
             ),
             GestureDetector(
               onTap: () {
-                print('object');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (c) {
+                      return RegisterWithPhoneView();
+                    },
+                  ),
+                );
               },
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -50,7 +60,16 @@ showModalBottom(BuildContext context) {
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (c) {
+                      return RegisterWithEmailView();
+                    },
+                  ),
+                );
+              },
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Row(
