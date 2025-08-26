@@ -18,7 +18,7 @@ class ActionsWidget extends StatelessWidget {
               child: CustomOutlinedButton(
                 text: 'تسجيل الدخول',
                 onPressed: () {
-                  showModalBottom(context);
+                  showModalBottom(context, isLogin: true);
                 },
               ),
             ),
@@ -27,7 +27,7 @@ class ActionsWidget extends StatelessWidget {
               child: CustomButton(
                 text: 'انشاء حساب',
                 onPressed: () {
-                  showModalBottom(context);
+                  showModalBottom(context, isLogin: false);
                 },
                 textColor: Colors.white,
                 backgroundColor: AppColors.primaryColor,

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
-import 'package:sear_soqe/features/auth/presentation/view/login_view.dart';
+import 'package:sear_soqe/features/auth/presentation/view/login_with_phone_view.dart';
+import 'package:sear_soqe/features/auth/presentation/view/login_with_email_view.dart';
 import 'package:sear_soqe/features/auth/presentation/view/register_with_email_view.dart';
 import 'package:sear_soqe/features/auth/presentation/view/register_with_phone_view.dart';
 
-showModalBottom(BuildContext context) {
+showModalBottom(BuildContext context, {required bool isLogin}) {
   return showModalBottomSheet(
     context: context,
     builder: (context) {
@@ -27,7 +28,7 @@ showModalBottom(BuildContext context) {
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  'انشاء حساب جديد',
+                  isLogin ? 'تسجيل الدخول' : 'انشاء حساب جديد',
                   textAlign: TextAlign.end,
                   style: TextStyle(
                     fontSize: 16.sp,
@@ -42,7 +43,9 @@ showModalBottom(BuildContext context) {
                   context,
                   MaterialPageRoute(
                     builder: (c) {
-                      return RegisterWithPhoneView();
+                      return isLogin
+                          ? LoginWithPhoneView()
+                          : RegisterWithPhoneView();
                     },
                   ),
                 );
@@ -65,7 +68,9 @@ showModalBottom(BuildContext context) {
                   context,
                   MaterialPageRoute(
                     builder: (c) {
-                      return RegisterWithEmailView();
+                      return isLogin
+                          ? LoginWithEmailView()
+                          : RegisterWithEmailView();
                     },
                   ),
                 );
