@@ -87,15 +87,15 @@ class HomeView extends StatelessWidget {
                       hintText: 'ابحث عن سيارات مستعملة هنا ..',
                       suffixIcon: Icon(CupertinoIcons.search),
                     ),
-                    SvgPicture.asset('assets/images/my_car.svg'),
+                    SizedBox(height: 14.h),
                     Row(
                       children: [
                         HomeOptionWidget(
-                          image: 'assets/images/my_car.svg',
+                          image: 'assets/images/my_car.png',
                           title: 'شراء سيارة',
                         ),
                         HomeOptionWidget(
-                          image: 'assets/images/car-key.svg',
+                          image: 'assets/images/car-key.png',
                           title: 'بيع سيارة',
                         ),
                       ],
@@ -103,11 +103,11 @@ class HomeView extends StatelessWidget {
                     Row(
                       children: [
                         HomeOptionWidget(
-                          image: 'assets/images/compass.svg',
+                          image: 'assets/images/compass.png',
                           title: 'دليل السياره',
                         ),
                         HomeOptionWidget(
-                          image: 'assets/images/newspaper.svg',
+                          image: 'assets/images/newspaper.png',
                           title: 'اخبار السيارات',
                         ),
                       ],
@@ -165,11 +165,68 @@ class HomeView extends StatelessWidget {
                     Expanded(
                       child: TabBarView(
                         children: [
-                          Center(child: Text('شكل السياره')),
-                          Center(child: Text('الماركه')),
-                          Center(child: Text('الوقود المستخدم')),
-                          Center(child: Text('السنه')),
-                          Center(child: Text('المدينه')),
+                          GridView.builder(
+                            shrinkWrap: true,
+                            itemCount: 10,
+                            scrollDirection: Axis.horizontal,
+                            gridDelegate:
+                                SliverGridDelegateWithMaxCrossAxisExtent(
+                                  maxCrossAxisExtent: 120,
+
+                                  childAspectRatio: 1,
+                                  crossAxisSpacing: 4,
+                                  mainAxisSpacing: 4,
+                                ),
+                            itemBuilder: (context, index) {
+                              return CategoryWidget();
+                            },
+                          ),
+                          GridView.builder(
+                            shrinkWrap: true,
+                            itemCount: 10,
+                            scrollDirection: Axis.horizontal,
+                            gridDelegate:
+                                SliverGridDelegateWithMaxCrossAxisExtent(
+                                  maxCrossAxisExtent: 120,
+
+                                  childAspectRatio: 1,
+                                  crossAxisSpacing: 4,
+                                  mainAxisSpacing: 4,
+                                ),
+                            itemBuilder: (context, index) {
+                              return CategoryWidget();
+                            },
+                          ),
+                          GridView.builder(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: 10,
+                            scrollDirection: Axis.horizontal,
+                            gridDelegate:
+                                SliverGridDelegateWithMaxCrossAxisExtent(
+                                  maxCrossAxisExtent: 120,
+
+                                  childAspectRatio: 1,
+                                  crossAxisSpacing: 4,
+                                  mainAxisSpacing: 4,
+                                ),
+                            itemBuilder: (context, index) {
+                              return CategoryWidget();
+                            },
+                          ),
+                          GridView.builder(
+                            gridDelegate:
+                                SliverGridDelegateWithMaxCrossAxisExtent(
+                                  maxCrossAxisExtent: 120,
+
+                                  childAspectRatio: 1,
+                                  crossAxisSpacing: 4,
+                                  mainAxisSpacing: 4,
+                                ),
+                            itemBuilder: (context, index) {
+                              return CategoryWidget();
+                            },
+                          ),
                         ],
                       ),
                     ),
@@ -203,11 +260,32 @@ class HomeOptionWidget extends StatelessWidget {
           ),
           child: Row(
             children: [
-              SvgPicture.asset(image),
+              Image.asset(image),
               SizedBox(width: 10.w),
               Text(title, style: TextStyle(color: AppColors.white)),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class CategoryWidget extends StatelessWidget {
+  const CategoryWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Column(
+          children: [
+            Align(alignment: Alignment.topRight, child: Text('الماركه')),
+            SizedBox(height: 4.h),
+            Image.asset('assets/images/car_category.png'),
+          ],
         ),
       ),
     );
