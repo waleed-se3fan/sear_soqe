@@ -6,11 +6,15 @@ class CustomFooterWidget extends StatelessWidget {
   final double progress;
   final String title;
   final Widget? trailing;
+  final VoidCallback? onTapTitle;
+  final VoidCallback? onTapTrailing;
   const CustomFooterWidget({
     super.key,
     required this.progress,
     required this.title,
     this.trailing,
+    this.onTapTitle,
+    this.onTapTrailing,
   });
 
   @override
@@ -19,23 +23,23 @@ class CustomFooterWidget extends StatelessWidget {
       children: [
         LinearProgressIndicator(
           value: progress,
-          backgroundColor: AppColors.primaryColor,
-          color: AppColors.fillGrey,
+          color: AppColors.primaryColor,
+          backgroundColor: AppColors.fillGrey,
           minHeight: 6.h,
           borderRadius: BorderRadius.circular(12.r),
         ),
         SizedBox(height: 8.h),
         Row(
           children: [
-            if (trailing != null) trailing!,
-            Spacer(),
-            TextButton(
-              onPressed: () {},
+            InkWell(
+              onTap: onTapTitle,
               child: Text(
                 title,
                 style: TextStyle(color: AppColors.primaryColor),
               ),
             ),
+            Spacer(),
+            InkWell(onTap: onTapTrailing, child: trailing),
           ],
         ),
         SizedBox(height: 16.h),

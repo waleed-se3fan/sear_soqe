@@ -47,6 +47,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textAlign: TextAlign.right,
       autofillHints: autofillHints,
       controller: controller,
       obscureText: obscureText,

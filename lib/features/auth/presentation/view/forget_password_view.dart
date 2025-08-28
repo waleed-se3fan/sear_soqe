@@ -17,13 +17,12 @@ class ForgetPasswordView extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 18.w),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomAuthHeaderWidget(title: 'نسيت كلمه المرور'),
               SizedBox(height: 20.h),
               Text(
                 'لا تقلق تم ارسال كود الى البريد الالكتروني لاستعاده حسابك',
-                textAlign: TextAlign.start,
                 style: TextStyle(
                   fontSize: 13.sp,
                   height: 1.2,
@@ -40,21 +39,19 @@ class ForgetPasswordView extends StatelessWidget {
 
               Spacer(),
               CustomFooterWidget(
-                progress: 1,
+                progress: .6,
+                trailing: Icon(Icons.arrow_forward),
                 title: 'المتابعه',
-                trailing: IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const ResetPasswordView();
-                        },
-                      ),
-                    );
-                  },
-                  icon: Icon(Icons.arrow_back),
-                ),
+                onTapTitle: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const ResetPasswordView();
+                      },
+                    ),
+                  );
+                },
               ),
             ],
           ),

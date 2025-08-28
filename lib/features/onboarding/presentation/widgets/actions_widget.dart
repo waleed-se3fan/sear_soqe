@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sear_soqe/core/common/widgets/custom_btn.dart';
 import 'package:sear_soqe/core/common/widgets/custom_outlined_button.dart';
+import 'package:sear_soqe/core/routes/router_names.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:sear_soqe/features/onboarding/presentation/widgets/show_modal_button.dart';
 
@@ -37,11 +39,16 @@ class ActionsWidget extends StatelessWidget {
         ),
 
         SizedBox(height: 10.h),
-        Text(
-          'المتابعة للتطبيق كزائر',
-          textAlign: TextAlign.center,
+        InkWell(
+          onTap: () {
+            context.push(RouterNames.home);
+          },
+          child: Text(
+            'المتابعة للتطبيق كزائر',
+            textAlign: TextAlign.center,
 
-          style: TextStyle(fontSize: 15.sp, color: AppColors.black),
+            style: TextStyle(fontSize: 15.sp, color: AppColors.black),
+          ),
         ),
       ],
     );

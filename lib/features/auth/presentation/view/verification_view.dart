@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sear_soqe/core/common/widgets/custom_text_form_field.dart';
+import 'package:sear_soqe/core/routes/router_names.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:sear_soqe/features/auth/presentation/view/create_account_view.dart';
-import 'package:sear_soqe/features/auth/presentation/view/register_with_phone_view.dart';
+import 'package:sear_soqe/features/auth/presentation/view/register/register_with_phone_view.dart';
 import 'package:sear_soqe/features/auth/presentation/widgets/custom_header_widget.dart';
 import 'package:sear_soqe/features/auth/presentation/widgets/custom_footer_widget.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -53,21 +55,12 @@ class VerificationView extends StatelessWidget {
               SizedBox(height: 20.h),
               Spacer(),
               CustomFooterWidget(
-                progress: 0.3,
+                onTapTitle: () {
+                  context.go(RouterNames.selectYourCoubtry);
+                },
+                progress: 0.6,
+                trailing: Icon(Icons.arrow_forward),
                 title: 'انشاء الحساب',
-                trailing: IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return CreateAccountView();
-                        },
-                      ),
-                    );
-                  },
-                  icon: Icon(Icons.arrow_back),
-                ),
               ),
             ],
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sear_soqe/features/home/presentation/view/home_view.dart';
 
 class ChooseCountryView extends StatelessWidget {
   const ChooseCountryView({super.key});
@@ -30,13 +31,12 @@ class ChooseCountryView extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 12.w),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('اختر الدولة', style: TextStyle(fontSize: 20)),
               SizedBox(height: 20.h),
               Text(
                 'سوف تستخدم هذا البريد الالكتروني للدخول للتطبيق واستعاده البريد الالكتروني',
-                textAlign: TextAlign.end,
 
                 style: TextStyle(fontSize: 12.sp, color: Colors.black45),
               ),
@@ -76,14 +76,25 @@ class CountryCard extends StatelessWidget {
 
       child: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Text(countryName),
-            SizedBox(width: 20.w),
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return const HomeView();
+                },
+              ),
+            );
+          },
+          child: Row(
+            children: [
+              SvgPicture.asset(countryFlag),
+              SizedBox(width: 20.w),
 
-            SvgPicture.asset(countryFlag),
-          ],
+              Text(countryName),
+            ],
+          ),
         ),
       ),
     );

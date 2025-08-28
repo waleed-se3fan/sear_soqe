@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sear_soqe/core/common/widgets/custom_text_form_field.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
+import 'package:sear_soqe/features/auth/presentation/view/forget_password_view.dart';
 import 'package:sear_soqe/features/auth/presentation/widgets/custom_header_widget.dart';
 import 'package:sear_soqe/features/auth/presentation/widgets/custom_footer_widget.dart';
 
@@ -34,11 +35,18 @@ class CreateAccountView extends StatelessWidget {
               Spacer(),
               CustomFooterWidget(
                 progress: 0.05,
+                trailing: Icon(Icons.arrow_forward),
                 title: 'المتابعه',
-                trailing: IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.arrow_back),
-                ),
+                onTapTitle: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const ForgetPasswordView();
+                      },
+                    ),
+                  );
+                },
               ),
             ],
           ),

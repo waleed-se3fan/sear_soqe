@@ -28,7 +28,11 @@ class PopIconWidget extends StatelessWidget {
               ),
             ],
           ),
-          child: Icon(Icons.arrow_back_ios, size: 20.sp, color: Colors.black54),
+          child: Icon(
+            Icons.arrow_forward_ios,
+            size: 20.sp,
+            color: Colors.black54,
+          ),
         ),
       ),
     );
