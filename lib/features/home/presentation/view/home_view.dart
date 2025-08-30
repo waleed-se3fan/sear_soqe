@@ -12,7 +12,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(40.r),
         child: BottomNavigationBar(
           backgroundColor: Colors.white,
           currentIndex: 0,
@@ -22,8 +22,8 @@ class HomeView extends StatelessWidget {
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/images/logo.svg',
-                width: 25,
-                height: 25,
+                width: 22,
+                height: 22,
               ),
               label: 'الرئيسية',
             ),
@@ -51,10 +51,10 @@ class HomeView extends StatelessWidget {
         ),
       ),
 
-      body: Column(
-        children: [
-          Expanded(
-            child: Container(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(40),
@@ -65,10 +65,7 @@ class HomeView extends StatelessWidget {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 50,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 60.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -79,15 +76,14 @@ class HomeView extends StatelessWidget {
                         Text('English', style: TextStyle(color: Colors.white)),
                       ],
                     ),
-                    Text(
-                      'مرحباً Mohamed Ahmed',
-                      style: TextStyle(color: Colors.white),
-                    ),
+                    SizedBox(height: 8.h),
+
+                    CountrySearchComponent(),
                     CustomTextFormField(
                       hintText: 'ابحث عن سيارات مستعملة هنا ..',
                       suffixIcon: Icon(CupertinoIcons.search),
                     ),
-                    SizedBox(height: 14.h),
+                    SizedBox(height: 10.h),
                     Row(
                       children: [
                         HomeOptionWidget(
@@ -116,13 +112,14 @@ class HomeView extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          DefaultTabController(
-            initialIndex: 0,
-            length: 5,
 
-            child: Expanded(
+            DefaultTabController(
+              initialIndex: 0,
+              length: 5,
+
               child: Container(
+                height: 230.h,
+                padding: EdgeInsets.only(right: 14.w, top: 10.h),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -234,8 +231,9 @@ class HomeView extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-        ],
+            SelectWithBudget(),
+          ],
+        ),
       ),
     );
   }
@@ -253,10 +251,10 @@ class HomeOptionWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(3.0),
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14),
-            color: Colors.white.withOpacity(0.2),
+            color: Colors.white.withValues(alpha: 0.2),
           ),
           child: Row(
             children: [
@@ -292,6 +290,143 @@ class CategoryWidget extends StatelessWidget {
   }
 }
 
+class CountrySearchComponent extends StatefulWidget {
+  const CountrySearchComponent({super.key});
+
+  @override
+  State<CountrySearchComponent> createState() => _CountrySearchComponentState();
+}
+
+class _CountrySearchComponentState extends State<CountrySearchComponent> {
+  String _selectedCountry = 'SA';
+
+  final Map<String, String> _countryFlags = const {
+    'SA': 'assets/images/saudia.svg',
+    'EG': 'assets/images/egypt.svg',
+    'QA': 'assets/images/qatar.svg',
+    'BH': 'assets/images/bahreen.svg',
+    'AE': 'assets/images/emirates.svg',
+    'KW': 'assets/images/kwit.svg',
+    'OM': 'assets/images/oman.svg',
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          "مرحباً Mohamed Ahmed",
+          style: TextStyle(
+            fontSize: 22,
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        const SizedBox(height: 12),
+        Row(
+          children: [
+            const Text(
+              "إبحث عن السيارات في",
+              style: TextStyle(color: Colors.white),
+            ),
+            const SizedBox(width: 10),
+
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 4.w),
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.2),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton<String>(
+                  value: _selectedCountry,
+                  icon: const Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: Colors.white,
+                  ),
+                  dropdownColor: const Color(0xFF6A1FBF),
+                  style: const TextStyle(color: Colors.white),
+                  onChanged: (value) {
+                    if (value == null) return;
+                    setState(() => _selectedCountry = value);
+                  },
+                  items: _countryFlags.entries.map((e) {
+                    return DropdownMenuItem<String>(
+                      value: e.key,
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(e.value, width: 20, height: 14),
+                          const SizedBox(width: 6),
+                          Text(
+                            e.key,
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 8.h),
+      ],
+    );
+  }
+}
+
+class SelectWithBudget extends StatelessWidget {
+  const SelectWithBudget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Text(
+                'حسب الميزانية',
+                style: TextStyle(color: AppColors.black, fontSize: 16.sp),
+              ),
+              Spacer(),
+              Row(
+                children: [
+                  Text(
+                    'استعراض الكل',
+                    style: TextStyle(color: Colors.blue, fontSize: 12.sp),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_sharp,
+                    color: Colors.blue,
+                    size: 14.sp,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Text(
+            'ابحث عن سيارات بسعر محدد',
+            style: TextStyle(fontSize: 12.sp, color: AppColors.grey),
+          ),
+          SizedBox(height: 16.h),
+          ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (c, i) {
+              return const CategoryWidget();
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 // class HomeView extends StatelessWidget {
 //   const HomeView({super.key});
 
@@ -317,7 +452,7 @@ class CategoryWidget extends StatelessWidget {
 //       ),
 //     );
 //   }
-// }
+//}
 
 // //////////////// HEADER ////////////////////
 // class _HeaderSection extends StatefulWidget {

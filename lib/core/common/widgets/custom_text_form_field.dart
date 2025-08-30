@@ -47,6 +47,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      focusNode: FocusNode()..unfocus(),
       textAlign: TextAlign.right,
       autofillHints: autofillHints,
       controller: controller,
