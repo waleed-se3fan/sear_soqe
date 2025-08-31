@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sear_soqe/core/data/cached/cache_helper.dart';
 import 'package:sear_soqe/core/routes/app_routers.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:sear_soqe/features/stop_view.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sear_soqe/firebase_options.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // Future<String> checkPaidStatus() async {
 //   DatabaseReference ref = FirebaseDatabase.instance.ref();
@@ -17,6 +19,8 @@ import 'package:firebase_database/firebase_database.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  CacheHelper.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(const MyApp());
