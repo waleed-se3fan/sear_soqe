@@ -37,7 +37,7 @@ class HomeView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    HomeHeaderComponent(),
+                    const HomeHeaderComponent(),
                     SizedBox(height: 8.h),
 
                     CountrySearchComponent(),

@@ -18,6 +18,8 @@ abstract class AppColors {
   static const Color textColor = Color(0xFF535353);
   static const Color lightColor = Color(0xFFDFDFDF);
   static const Color yellow = Color.fromARGB(255, 245, 216, 103);
+  static const Color blue = Color(0xFF2670DE);
+
   // lib/core/constants/app_colors.dart
 
   static const Color primary = Color(0xFF3B82F6); // أزرق رئيسي

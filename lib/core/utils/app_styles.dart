@@ -28,9 +28,19 @@ class AppStyles {
     fontWeight: FontWeight.w400,
     color: Colors.grey,
   );
-  static final ts12W400 = TextStyle(
+  static final ts12BlackW400 = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
+    color: AppColors.black,
+  );
+  static final ts14W400 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+  );
+  static final ts14W300 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w300,
+    color: Colors.grey,
   );
   static final ts12OrangeW400 = TextStyle(
     fontSize: 12.sp,
@@ -61,6 +71,12 @@ class AppStyles {
     color: Colors.grey,
     height: 1.5,
   );
+  static final ts14BlueW500 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.blue,
+  );
+
   static final ts14WhiteW600 = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeight.w600,
@@ -85,6 +101,11 @@ class AppStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.black,
   );
+  static final ts16BlueW500 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.blue,
+  );
   static final ts16W600 = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
@@ -102,10 +123,7 @@ class AppStyles {
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
-  static const ts16White70 = TextStyle(
-    fontSize: 16,
-    color: Colors.white70,
-  );
+  static const ts16White70 = TextStyle(fontSize: 16, color: Colors.white70);
 
   // Font Size 18
   static const ts18BlackW600 = TextStyle(
@@ -173,7 +191,5 @@ class AppStyles {
   );
 
   // Specials
-  static const tsTitleRed = TextStyle(
-    color: Colors.red,
-  );
+  static const tsTitleRed = TextStyle(color: Colors.red);
 }

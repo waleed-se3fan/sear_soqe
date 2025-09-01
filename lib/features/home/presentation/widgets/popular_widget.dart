@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sear_soqe/core/theme/app_colors.dart';
+import 'package:sear_soqe/core/utils/app_styles.dart';
 
 class PopularWidget extends StatelessWidget {
   final String imageUrl;
@@ -68,25 +70,17 @@ class PopularWidget extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Text(
-                    date,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black87,
-                    ),
-                  ),
+                  child: Text(date, style: AppStyles.ts12GreyW400),
                 ),
               ),
             ],
           ),
 
-          /// Title
           Padding(
             padding: const EdgeInsets.all(4.0),
             child: Text(
               title,
-              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              style: AppStyles.ts14BlackW500,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
@@ -95,14 +89,7 @@ class PopularWidget extends StatelessWidget {
           /// Price
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: Text(
-              price,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
-              ),
-            ),
+            child: Text(price, style: AppStyles.ts14BlueW500),
           ),
 
           const SizedBox(height: 6),
@@ -134,13 +121,12 @@ class PopularWidget extends StatelessWidget {
     );
   }
 
-  /// Helper widget for icons + text
   Widget _infoItem(IconData icon, String text) {
     return Row(
       children: [
-        Icon(icon, size: 16, color: Colors.grey[600]),
+        Icon(icon, size: 12, color: AppColors.grey),
         const SizedBox(width: 4),
-        Text(text, style: TextStyle(fontSize: 12, color: Colors.grey[800])),
+        Text(text, style: AppStyles.ts12BlackW400),
       ],
     );
   }
