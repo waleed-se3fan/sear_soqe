@@ -101,16 +101,7 @@ class ProfileView extends StatelessWidget {
                 title: "تسجيل الخروج",
                 titleColor: Colors.red,
                 icon: Icons.logout,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (c) {
-                        return const CarDetailsView();
-                      },
-                    ),
-                  );
-                },
+                onTap: () {},
               ),
 
               const SizedBox(height: 80),
