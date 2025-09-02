@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:sear_soqe/core/app_cubit/app_cubit.dart';
 import 'package:sear_soqe/core/data/cached/cache_helper.dart';
 import 'package:sear_soqe/core/routes/router_names.dart';
+import 'package:sear_soqe/features/add_car/presentation/view/add_car_view.dart';
+import 'package:sear_soqe/features/add_car/presentation/view/congratulation_view.dart';
 import 'package:sear_soqe/features/auth/presentation/view/choose_country_view.dart';
 import 'package:sear_soqe/features/auth/presentation/view/create_account_view.dart';
 import 'package:sear_soqe/features/auth/presentation/view/register/register_with_email_view.dart';
@@ -48,6 +50,14 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: RouterNames.selectYourCoubtry,
       builder: (context, state) => const ChooseCountryView(),
+    ),
+    GoRoute(
+      path: RouterNames.addCar,
+      builder: (context, state) => const AddCarView(),
+    ),
+    GoRoute(
+      path: RouterNames.congratulation,
+      builder: (context, state) => const CongratulationView(),
     ),
   ],
 );

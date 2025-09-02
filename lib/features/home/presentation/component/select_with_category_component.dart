@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
-import 'package:sear_soqe/features/home/presentation/view/home_view.dart';
 import 'package:sear_soqe/features/home/presentation/widgets/category_widget.dart';
 
 class SelectWithCategoryComponent extends StatelessWidget {

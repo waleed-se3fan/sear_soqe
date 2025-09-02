@@ -6,7 +6,7 @@ class ProfileTile extends StatelessWidget {
   final String title;
   final IconData icon;
   final String? secondary;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final Color? iconColor;
   final Color? titleColor;
 
@@ -14,7 +14,7 @@ class ProfileTile extends StatelessWidget {
     super.key,
     required this.title,
     required this.icon,
-    required this.onTap,
+    this.onTap,
     this.secondary,
     this.iconColor,
     this.titleColor,
