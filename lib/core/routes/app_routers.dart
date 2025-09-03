@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:sear_soqe/core/app_cubit/app_cubit.dart';
 import 'package:sear_soqe/core/data/cached/cache_helper.dart';
 import 'package:sear_soqe/core/routes/router_names.dart';
+import 'package:sear_soqe/features/add_car/presentation/logic/cubit/add_car_cubit.dart';
 import 'package:sear_soqe/features/add_car/presentation/view/add_car_view.dart';
 import 'package:sear_soqe/features/add_car/presentation/view/congratulation_view.dart';
 import 'package:sear_soqe/features/auth/presentation/view/choose_country_view.dart';
@@ -17,7 +18,7 @@ import 'package:sear_soqe/features/onboarding/presentation/view/onboarding_view.
 import 'package:sear_soqe/splash_view.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: RouterNames.splash,
+  initialLocation: RouterNames.addCar,
 
   routes: [
     GoRoute(
@@ -53,7 +54,10 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: RouterNames.addCar,
-      builder: (context, state) => const AddCarView(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => AddCarCubit(),
+        child: const AddCarView(),
+      ),
     ),
     GoRoute(
       path: RouterNames.congratulation,
