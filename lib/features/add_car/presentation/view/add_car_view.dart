@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sear_soqe/core/common/widgets/custom_text_form_field.dart';
+import 'package:sear_soqe/core/functions/show_exit_panel.dart';
+import 'package:sear_soqe/core/functions/show_toast.dart';
+
 import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:sear_soqe/core/utils/app_styles.dart';
 import 'package:sear_soqe/features/add_car/presentation/logic/cubit/add_car_cubit.dart';
@@ -28,10 +31,22 @@ class AddCarView extends StatelessWidget {
             builder: (context, state) {
               if (state is ChangeIndex) {
                 if (state.index == 0) {
-                  return FlutterLogo();
+                  return AddCarByAddingVedioComponent();
                 } else if (state.index == 1) {
                   return AddCarByRegionComponent();
-                } else {}
+                } else if (state.index == 2) {
+                  return AddCarByCityComponent();
+                } else if (state.index == 3) {
+                  return AddCarByTypeComponent();
+                } else if (state.index == 4) {
+                  return AddCarByYearComponent();
+                } else if (state.index == 5) {
+                  return AddCarByColorComponent();
+                } else if (state.index == 6) {
+                  return AddCarByPriceAndDistanceComponent();
+                } else if (state.index == 7) {
+                  return AddCarByAddingImagesComponent();
+                }
               }
               return AddCarByAddingVedioComponent();
             },
@@ -54,11 +69,16 @@ class AddCarTitle extends StatelessWidget {
         children: [
           Text(title, style: AppStyles.ts20WhiteW500),
           Spacer(),
-          SvgPicture.asset(
-            'assets/images/close.svg',
-            width: 24.w,
-            height: 24.h,
-            colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),
+          InkWell(
+            onTap: () {
+              showExitPanel(context);
+            },
+            child: SvgPicture.asset(
+              'assets/images/close.svg',
+              width: 24.w,
+              height: 24.h,
+              colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),
+            ),
           ),
         ],
       ),
@@ -68,7 +88,8 @@ class AddCarTitle extends StatelessWidget {
 
 class AddCarFooter extends StatelessWidget {
   final double progress;
-  const AddCarFooter({super.key, required this.progress});
+  final int index;
+  const AddCarFooter({super.key, required this.progress, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +107,9 @@ class AddCarFooter extends StatelessWidget {
             child: Row(
               children: [
                 TextButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<AddCarCubit>().changeIndex(index + 1);
+                  },
                   icon: Text('التالي'),
                   label: Icon(Icons.arrow_forward),
                   style: TextButton.styleFrom(
@@ -95,7 +118,9 @@ class AddCarFooter extends StatelessWidget {
                 ),
                 Spacer(),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<AddCarCubit>().changeIndex(index - 1);
+                  },
                   style: TextButton.styleFrom(
                     foregroundColor: AppColors.textColor,
                   ),
@@ -939,7 +964,7 @@ class AddCarByAddingVedioComponent extends StatelessWidget {
             ],
           ),
         ),
-        AddCarFooter(progress: .4),
+        AddCarFooter(progress: .4, index: 3),
       ],
     );
   }
@@ -1128,260 +1153,3 @@ class OutlineItem extends StatelessWidget {
     return Center(child: Text(title));
   }
 }
-
-// class AddCarByAdditionalFeaturesComponent extends StatelessWidget {
-//   const AddCarByAdditionalFeaturesComponent({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       mainAxisAlignment: MainAxisAlignment.end,
-//       children: [
-//         MainTitleWidget(title: 'فى اى نوع توجد سيارتك ؟'),
-//         SizedBox(height: 50.h),
-
-//         Container(
-//           width: double.infinity,
-//           decoration: BoxDecoration(
-//             color: Colors.white,
-//             borderRadius: BorderRadius.only(
-//               topLeft: Radius.circular(40),
-//               topRight: Radius.circular(40),
-//             ),
-//           ),
-//           child: Column(
-//             children: [
-//               CustomTextFormField(
-//                 hintText: 'ابحث عن منطقة توجد سيارتك',
-//                 suffixIcon: Icon(CupertinoIcons.search),
-//               ),
-//               CustomTextFormField(
-//                 hintText: 'ابحث عن مدينة توجد سيارتك',
-//                 suffixIcon: Icon(CupertinoIcons.search),
-//               ),
-
-//               SizedBox(
-//                 height: 400,
-//                 child: ListView.builder(
-//                   shrinkWrap: true,
-//                   itemCount: 10,
-//                   itemExtent: 50,
-//                   itemBuilder: (c, i) {
-//                     return Card(
-//                       color: AppColors.white,
-//                       child: Row(
-//                         children: [
-//                           Text('الرياض'),
-//                           Spacer(),
-//                           SvgPicture.asset(
-//                             'assets/images/logo.svg',
-//                             width: 24.w,
-//                             height: 24.h,
-//                           ),
-//                         ],
-//                       ),
-//                     );
-//                   },
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//         AddCarFooter(progress: .4),
-//       ],
-//     );
-//   }
-// }
-
-// class AddCarByPrivateFeaturesAndSpecialCompainComponent
-//     extends StatelessWidget {
-//   const AddCarByPrivateFeaturesAndSpecialCompainComponent({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       mainAxisAlignment: MainAxisAlignment.end,
-//       children: [
-//         MainTitleWidget(title: 'فى اى نوع توجد سيارتك ؟'),
-//         SizedBox(height: 50.h),
-
-//         Container(
-//           width: double.infinity,
-//           decoration: BoxDecoration(
-//             color: Colors.white,
-//             borderRadius: BorderRadius.only(
-//               topLeft: Radius.circular(40),
-//               topRight: Radius.circular(40),
-//             ),
-//           ),
-//           child: Column(
-//             children: [
-//               CustomTextFormField(
-//                 hintText: 'ابحث عن منطقة توجد سيارتك',
-//                 suffixIcon: Icon(CupertinoIcons.search),
-//               ),
-//               CustomTextFormField(
-//                 hintText: 'ابحث عن مدينة توجد سيارتك',
-//                 suffixIcon: Icon(CupertinoIcons.search),
-//               ),
-
-//               SizedBox(
-//                 height: 400,
-//                 child: ListView.builder(
-//                   shrinkWrap: true,
-//                   itemCount: 10,
-//                   itemExtent: 50,
-//                   itemBuilder: (c, i) {
-//                     return Card(
-//                       color: AppColors.white,
-//                       child: Row(
-//                         children: [
-//                           Text('الرياض'),
-//                           Spacer(),
-//                           SvgPicture.asset(
-//                             'assets/images/logo.svg',
-//                             width: 24.w,
-//                             height: 24.h,
-//                           ),
-//                         ],
-//                       ),
-//                     );
-//                   },
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//         AddCarFooter(progress: .4),
-//       ],
-//     );
-//   }
-// }
-
-// class AddCarByImagesComponent extends StatelessWidget {
-//   const AddCarByImagesComponent({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       mainAxisAlignment: MainAxisAlignment.end,
-//       children: [
-//         MainTitleWidget(title: 'فى اى نوع توجد سيارتك ؟'),
-//         SizedBox(height: 50.h),
-
-//         Container(
-//           width: double.infinity,
-//           decoration: BoxDecoration(
-//             color: Colors.white,
-//             borderRadius: BorderRadius.only(
-//               topLeft: Radius.circular(40),
-//               topRight: Radius.circular(40),
-//             ),
-//           ),
-//           child: Column(
-//             children: [
-//               CustomTextFormField(
-//                 hintText: 'ابحث عن منطقة توجد سيارتك',
-//                 suffixIcon: Icon(CupertinoIcons.search),
-//               ),
-//               CustomTextFormField(
-//                 hintText: 'ابحث عن مدينة توجد سيارتك',
-//                 suffixIcon: Icon(CupertinoIcons.search),
-//               ),
-
-//               SizedBox(
-//                 height: 400,
-//                 child: ListView.builder(
-//                   shrinkWrap: true,
-//                   itemCount: 10,
-//                   itemExtent: 50,
-//                   itemBuilder: (c, i) {
-//                     return Card(
-//                       color: AppColors.white,
-//                       child: Row(
-//                         children: [
-//                           Text('الرياض'),
-//                           Spacer(),
-//                           SvgPicture.asset(
-//                             'assets/images/logo.svg',
-//                             width: 24.w,
-//                             height: 24.h,
-//                           ),
-//                         ],
-//                       ),
-//                     );
-//                   },
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//         AddCarFooter(progress: .4),
-//       ],
-//     );
-//   }
-// }
-
-// class AddCarByOptionalVedioComponent extends StatelessWidget {
-//   const AddCarByOptionalVedioComponent({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       mainAxisAlignment: MainAxisAlignment.end,
-//       children: [
-//         MainTitleWidget(title: 'فى اى نوع توجد سيارتك ؟'),
-//         SizedBox(height: 50.h),
-
-//         Container(
-//           width: double.infinity,
-//           decoration: BoxDecoration(
-//             color: Colors.white,
-//             borderRadius: BorderRadius.only(
-//               topLeft: Radius.circular(40),
-//               topRight: Radius.circular(40),
-//             ),
-//           ),
-//           child: Column(
-//             children: [
-//               CustomTextFormField(
-//                 hintText: 'ابحث عن منطقة توجد سيارتك',
-//                 suffixIcon: Icon(CupertinoIcons.search),
-//               ),
-//               CustomTextFormField(
-//                 hintText: 'ابحث عن مدينة توجد سيارتك',
-//                 suffixIcon: Icon(CupertinoIcons.search),
-//               ),
-
-//               SizedBox(
-//                 height: 400,
-//                 child: ListView.builder(
-//                   shrinkWrap: true,
-//                   itemCount: 10,
-//                   itemExtent: 50,
-//                   itemBuilder: (c, i) {
-//                     return Card(
-//                       color: AppColors.white,
-//                       child: Row(
-//                         children: [
-//                           Text('الرياض'),
-//                           Spacer(),
-//                           SvgPicture.asset(
-//                             'assets/images/logo.svg',
-//                             width: 24.w,
-//                             height: 24.h,
-//                           ),
-//                         ],
-//                       ),
-//                     );
-//                   },
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//         AddCarFooter(progress: .4),
-//       ],
-//     );
-//   }
-// }
