@@ -30,6 +30,7 @@ class AddCarView extends StatelessWidget {
           BlocBuilder<AddCarCubit, AddCarState>(
             builder: (context, state) {
               if (state is ChangeIndex) {
+                print(state.index);
                 if (state.index == 0) {
                   return AddCarByAddingVedioComponent();
                 } else if (state.index == 1) {
@@ -48,7 +49,7 @@ class AddCarView extends StatelessWidget {
                   return AddCarByAddingImagesComponent();
                 }
               }
-              return AddCarByAddingVedioComponent();
+              return AddCarByCityComponent();
             },
           ),
         ],
@@ -207,7 +208,7 @@ class AddCarByCityComponent extends StatelessWidget {
             ],
           ),
         ),
-        AddCarFooter(progress: .2),
+        AddCarFooter(progress: .1, index: 1),
       ],
     );
   }
@@ -267,7 +268,7 @@ class AddCarByRegionComponent extends StatelessWidget {
           ),
         ),
 
-        AddCarFooter(progress: .4),
+        AddCarFooter(progress: .2, index: 2),
       ],
     );
   }
@@ -341,7 +342,7 @@ class AddCarByTypeComponent extends StatelessWidget {
           ),
         ),
 
-        AddCarFooter(progress: .4),
+        AddCarFooter(progress: .3, index: 3),
       ],
     );
   }
@@ -392,7 +393,7 @@ class AddCarByVersionComponent extends StatelessWidget {
           ),
         ),
 
-        AddCarFooter(progress: .4),
+        AddCarFooter(progress: .4, index: 4),
       ],
     );
   }
@@ -443,7 +444,7 @@ class AddCarByModelComponent extends StatelessWidget {
           ),
         ),
 
-        AddCarFooter(progress: .4),
+        AddCarFooter(progress: .5, index: 5),
       ],
     );
   }
@@ -494,7 +495,7 @@ class AddCarByYearComponent extends StatelessWidget {
           ),
         ),
 
-        AddCarFooter(progress: .4),
+        AddCarFooter(progress: .6, index: 6),
       ],
     );
   }
@@ -511,7 +512,7 @@ class AddCarByColorComponent extends StatelessWidget {
         AddCarTitle(title: 'ما هو لون سيارتك ؟'),
         AddCarBody(widget: ColorPickerPage()),
 
-        AddCarFooter(progress: .4),
+        AddCarFooter(progress: .7, index: 7),
       ],
     );
   }
@@ -552,7 +553,7 @@ class AddCarByPriceAndDistanceComponent extends StatelessWidget {
           ),
         ),
 
-        AddCarFooter(progress: .4),
+        AddCarFooter(progress: .8, index: 8),
       ],
     );
   }
@@ -568,7 +569,7 @@ class AddCarBySeniorityComponent extends StatelessWidget {
       children: [
         AddCarTitle(title: 'ما هو سنه سيارتك ؟'),
         AddCarBody(widget: ConditionSelector()),
-        AddCarFooter(progress: .4),
+        AddCarFooter(progress: .9, index: 9),
       ],
     );
   }
@@ -702,7 +703,7 @@ class AddCarByFeaturesComponent extends StatelessWidget {
             ),
           ),
         ),
-        AddCarFooter(progress: .4),
+        AddCarFooter(progress: 1, index: 10),
       ],
     );
   }
@@ -765,7 +766,7 @@ class AddCarByAdditionalFeaturesComponent extends StatelessWidget {
             ),
           ),
         ),
-        AddCarFooter(progress: .4),
+        AddCarFooter(progress: 1.1, index: 11),
       ],
     );
   }
@@ -847,7 +848,7 @@ class AddCarBySpecialFeaturesComponent extends StatelessWidget {
             ),
           ),
         ),
-        AddCarFooter(progress: .4),
+        AddCarFooter(progress: 1.2, index: 12),
       ],
     );
   }
@@ -918,7 +919,7 @@ class AddCarByAddingImagesComponent extends StatelessWidget {
             ],
           ),
         ),
-        AddCarFooter(progress: .4),
+        AddCarFooter(progress: 1.3, index: 13),
       ],
     );
   }
@@ -964,7 +965,7 @@ class AddCarByAddingVedioComponent extends StatelessWidget {
             ],
           ),
         ),
-        AddCarFooter(progress: .4, index: 3),
+        AddCarFooter(progress: 1.4, index: 14),
       ],
     );
   }
