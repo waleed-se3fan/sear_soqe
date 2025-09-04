@@ -41,7 +41,7 @@ class ActionsWidget extends StatelessWidget {
         SizedBox(height: 10.h),
         InkWell(
           onTap: () {
-            context.push(RouterNames.home);
+            context.push(RouterNames.bottomNavBar);
           },
           child: Text(
             'المتابعة للتطبيق كزائر',

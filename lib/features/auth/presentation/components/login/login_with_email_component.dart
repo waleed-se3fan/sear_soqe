@@ -6,7 +6,6 @@ import 'package:sear_soqe/core/routes/router_names.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:sear_soqe/features/auth/presentation/view/choose_country_view.dart';
 import 'package:sear_soqe/features/auth/presentation/view/forget_password_view.dart';
-import 'package:sear_soqe/features/auth/presentation/view/login/login_with_email_view.dart';
 import 'package:sear_soqe/features/auth/presentation/widgets/custom_footer_widget.dart';
 
 class LoginWithEmailComponent extends StatelessWidget {
