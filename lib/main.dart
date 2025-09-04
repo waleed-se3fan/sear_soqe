@@ -5,7 +5,6 @@ import 'package:sear_soqe/features/stop_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sear_soqe/firebase_options.dart';
-import 'package:firebase_database/firebase_database.dart';
 
 // Future<String> checkPaidStatus() async {
 //   DatabaseReference ref = FirebaseDatabase.instance.ref();
