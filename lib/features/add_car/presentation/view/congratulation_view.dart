@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sear_soqe/core/common/widgets/custom_outlined_button.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:sear_soqe/core/utils/app_styles.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CongratulationView extends StatelessWidget {
   const CongratulationView({super.key});
@@ -18,15 +17,16 @@ class CongratulationView extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
           ),
-          Positioned(
-            left: 20,
-            right: 20,
-            top: 300,
+          Padding(
+            padding: const EdgeInsets.all(12.0),
             child: Column(
               children: [
-                Icon(Icons.car_crash, size: 50, color: Colors.grey),
-                Text('تهانينا !', style: AppStyles.ts30WhiteW500),
-                SizedBox(height: 20),
+                SizedBox(height: 150),
+                SvgPicture.asset(
+                  'assets/images/congratulation.svg',
+                  height: 210,
+                  width: 239,
+                ),
                 Text(
                   'تم نشر إعلانك سيبدا فى الظهور فى نتائج البحث خلال بعض دقائق',
                   style: AppStyles.ts16WhiteW400,
@@ -36,29 +36,29 @@ class CongratulationView extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomCongratulationButton(
-                      onPressed: () {},
-                      child: TextButton.icon(
-                        onPressed: () {},
-                        label: Text('عرض الإعلان'),
-                        icon: Icon(Icons.remove_red_eye_outlined),
-                      ),
-                    ),
-                    CustomCongratulationButton(
-                      onPressed: () {},
-                      child: TextButton.icon(
-                        onPressed: () {},
-                        label: Text('عرض الإعلان'),
-                        icon: Icon(Icons.edit_outlined),
-                      ),
-                    ),
+                    // CustomCongratulationButton(
+                    //   onPressed: () {},
+                    //   child: TextButton.icon(
+                    //     onPressed: () {},
+                    //     label: Text('عرض الإعلان'),
+                    //     icon: Icon(Icons.remove_red_eye_outlined),
+                    //   ),
+                    // // ),
+                    // CustomCongratulationButton(
+                    //   onPressed: () {},
+                    //   child: TextButton.icon(
+                    //     onPressed: () {},
+                    //     label: Text('عرض الإعلان'),
+                    //     icon: Icon(Icons.edit_outlined),
+                    //   ),
+                    // ),
                   ],
                 ),
                 SizedBox(height: 20),
-                CustomCongratulationButton(
-                  onPressed: () {},
-                  child: Text('اعلاناتي'),
-                ),
+                // CustomCongratulationButton(
+                //   onPressed: () {},
+                //   child: Text('اعلاناتي'),
+                // ),
               ],
             ),
           ),

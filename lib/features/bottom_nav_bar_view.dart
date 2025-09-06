@@ -17,8 +17,6 @@ class BottomNavBarView extends StatelessWidget {
         children: [
           BlocBuilder<AppCubit, AppState>(
             builder: (context, state) {
-              print(state.bottomNavBarSelectedIndex);
-
               switch (state.bottomNavBarSelectedIndex) {
                 case 0:
                   return HomeView();

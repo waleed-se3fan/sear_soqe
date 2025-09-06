@@ -8,6 +8,7 @@ class CategoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Colors.white,
+
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: Column(

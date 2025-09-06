@@ -41,7 +41,7 @@ class SelectWithPopularityComponent extends StatelessWidget {
           ),
           SizedBox(height: 16.h),
           Container(
-            height: 300.h,
+            height: 350.h,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,

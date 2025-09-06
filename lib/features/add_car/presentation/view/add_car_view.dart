@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sear_soqe/core/common/widgets/custom_text_form_field.dart';
 import 'package:sear_soqe/core/functions/show_exit_panel.dart';
 import 'package:sear_soqe/core/functions/show_toast.dart';
-
+import 'package:sear_soqe/core/routes/router_names.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:sear_soqe/core/utils/app_styles.dart';
 import 'package:sear_soqe/features/add_car/presentation/logic/cubit/add_car_cubit.dart';
@@ -32,21 +33,33 @@ class AddCarView extends StatelessWidget {
               if (state is ChangeIndex) {
                 print(state.index);
                 if (state.index == 0) {
-                  return AddCarByAddingVedioComponent();
+                  return AddCarByCityComponent();
                 } else if (state.index == 1) {
                   return AddCarByRegionComponent();
                 } else if (state.index == 2) {
-                  return AddCarByCityComponent();
-                } else if (state.index == 3) {
                   return AddCarByTypeComponent();
+                } else if (state.index == 3) {
+                  return AddCarByVersionComponent();
                 } else if (state.index == 4) {
-                  return AddCarByYearComponent();
+                  return AddCarByModelComponent();
                 } else if (state.index == 5) {
-                  return AddCarByColorComponent();
+                  return AddCarByYearComponent();
                 } else if (state.index == 6) {
-                  return AddCarByPriceAndDistanceComponent();
+                  return AddCarByColorComponent();
                 } else if (state.index == 7) {
+                  return AddCarBySeniorityComponent();
+                } else if (state.index == 8) {
+                  return AddCarByPriceAndDistanceComponent();
+                } else if (state.index == 9) {
+                  return AddCarByFeaturesComponent();
+                } else if (state.index == 10) {
+                  return AddCarByAdditionalFeaturesComponent();
+                } else if (state.index == 11) {
+                  return AddCarBySpecialFeaturesComponent();
+                } else if (state.index == 12) {
                   return AddCarByAddingImagesComponent();
+                } else if (state.index == 13) {
+                  return AddCarByAddingVedioComponent();
                 }
               }
               return AddCarByCityComponent();
@@ -68,7 +81,10 @@ class AddCarTitle extends StatelessWidget {
       padding: EdgeInsets.all(16.w),
       child: Row(
         children: [
-          Text(title, style: AppStyles.ts20WhiteW500),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * .8,
+            child: Text(title, style: AppStyles.ts20WhiteW500),
+          ),
           Spacer(),
           InkWell(
             onTap: () {
@@ -109,7 +125,10 @@ class AddCarFooter extends StatelessWidget {
               children: [
                 TextButton.icon(
                   onPressed: () {
-                    context.read<AddCarCubit>().changeIndex(index + 1);
+                    if (index == 14) {
+                      context.go(RouterNames.congratulation);
+                    }
+                    context.read<AddCarCubit>().changeIndex(index);
                   },
                   icon: Text('التالي'),
                   label: Icon(Icons.arrow_forward),
@@ -120,7 +139,7 @@ class AddCarFooter extends StatelessWidget {
                 Spacer(),
                 TextButton(
                   onPressed: () {
-                    context.read<AddCarCubit>().changeIndex(index - 1);
+                    context.read<AddCarCubit>().changeIndex(index - 2);
                   },
                   style: TextButton.styleFrom(
                     foregroundColor: AppColors.textColor,
@@ -208,7 +227,7 @@ class AddCarByCityComponent extends StatelessWidget {
             ],
           ),
         ),
-        AddCarFooter(progress: .1, index: 1),
+        AddCarFooter(progress: .05, index: 1),
       ],
     );
   }
@@ -243,7 +262,7 @@ class AddCarByRegionComponent extends StatelessWidget {
               ),
 
               SizedBox(
-                height: 400,
+                height: 300,
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: 10,
@@ -268,7 +287,7 @@ class AddCarByRegionComponent extends StatelessWidget {
           ),
         ),
 
-        AddCarFooter(progress: .2, index: 2),
+        AddCarFooter(progress: .1, index: 2),
       ],
     );
   }
@@ -297,7 +316,7 @@ class AddCarByTypeComponent extends StatelessWidget {
               SizedBox(height: 10.h),
 
               SizedBox(
-                height: 110,
+                height: 100,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
 
@@ -311,7 +330,7 @@ class AddCarByTypeComponent extends StatelessWidget {
               ),
 
               SizedBox(
-                height: 400,
+                height: 300.h,
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: 10,
@@ -342,7 +361,7 @@ class AddCarByTypeComponent extends StatelessWidget {
           ),
         ),
 
-        AddCarFooter(progress: .3, index: 3),
+        AddCarFooter(progress: .15, index: 3),
       ],
     );
   }
@@ -368,7 +387,7 @@ class AddCarByVersionComponent extends StatelessWidget {
               ),
 
               SizedBox(
-                height: 400,
+                height: 300,
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: 10,
@@ -393,7 +412,7 @@ class AddCarByVersionComponent extends StatelessWidget {
           ),
         ),
 
-        AddCarFooter(progress: .4, index: 4),
+        AddCarFooter(progress: .2, index: 4),
       ],
     );
   }
@@ -419,7 +438,7 @@ class AddCarByModelComponent extends StatelessWidget {
               ),
 
               SizedBox(
-                height: 400,
+                height: 300,
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: 10,
@@ -444,7 +463,7 @@ class AddCarByModelComponent extends StatelessWidget {
           ),
         ),
 
-        AddCarFooter(progress: .5, index: 5),
+        AddCarFooter(progress: .25, index: 5),
       ],
     );
   }
@@ -470,7 +489,7 @@ class AddCarByYearComponent extends StatelessWidget {
               ),
 
               SizedBox(
-                height: 400,
+                height: 300,
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: 10,
@@ -495,7 +514,7 @@ class AddCarByYearComponent extends StatelessWidget {
           ),
         ),
 
-        AddCarFooter(progress: .6, index: 6),
+        AddCarFooter(progress: .3, index: 6),
       ],
     );
   }
@@ -512,7 +531,7 @@ class AddCarByColorComponent extends StatelessWidget {
         AddCarTitle(title: 'ما هو لون سيارتك ؟'),
         AddCarBody(widget: ColorPickerPage()),
 
-        AddCarFooter(progress: .7, index: 7),
+        AddCarFooter(progress: .35, index: 7),
       ],
     );
   }
@@ -553,7 +572,7 @@ class AddCarByPriceAndDistanceComponent extends StatelessWidget {
           ),
         ),
 
-        AddCarFooter(progress: .8, index: 8),
+        AddCarFooter(progress: .4, index: 8),
       ],
     );
   }
@@ -569,7 +588,7 @@ class AddCarBySeniorityComponent extends StatelessWidget {
       children: [
         AddCarTitle(title: 'ما هو سنه سيارتك ؟'),
         AddCarBody(widget: ConditionSelector()),
-        AddCarFooter(progress: .9, index: 9),
+        AddCarFooter(progress: .45, index: 9),
       ],
     );
   }
@@ -703,7 +722,7 @@ class AddCarByFeaturesComponent extends StatelessWidget {
             ),
           ),
         ),
-        AddCarFooter(progress: 1, index: 10),
+        AddCarFooter(progress: .5, index: 10),
       ],
     );
   }
@@ -766,7 +785,7 @@ class AddCarByAdditionalFeaturesComponent extends StatelessWidget {
             ),
           ),
         ),
-        AddCarFooter(progress: 1.1, index: 11),
+        AddCarFooter(progress: .55, index: 11),
       ],
     );
   }
@@ -783,7 +802,7 @@ class AddCarBySpecialFeaturesComponent extends StatelessWidget {
         AddCarTitle(title: 'احصل على ميزات خاصه واجعل اعلانك مميزا'),
         AddCarBody(
           widget: SizedBox(
-            height: MediaQuery.of(context).size.height * .7,
+            height: MediaQuery.of(context).size.height * .65,
             child: ListView(
               shrinkWrap: true,
               children: [
@@ -848,7 +867,7 @@ class AddCarBySpecialFeaturesComponent extends StatelessWidget {
             ),
           ),
         ),
-        AddCarFooter(progress: 1.2, index: 12),
+        AddCarFooter(progress: .6, index: 12),
       ],
     );
   }
@@ -919,7 +938,7 @@ class AddCarByAddingImagesComponent extends StatelessWidget {
             ],
           ),
         ),
-        AddCarFooter(progress: 1.3, index: 13),
+        AddCarFooter(progress: .65, index: 13),
       ],
     );
   }
@@ -965,7 +984,7 @@ class AddCarByAddingVedioComponent extends StatelessWidget {
             ],
           ),
         ),
-        AddCarFooter(progress: 1.4, index: 14),
+        AddCarFooter(progress: .7, index: 14),
       ],
     );
   }

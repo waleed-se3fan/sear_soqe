@@ -11,7 +11,7 @@ class SelectWithCategoryComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       initialIndex: 0,
-      length: 5,
+      length: 4,
 
       child: Container(
         height: 230.h,
@@ -50,7 +50,6 @@ class SelectWithCategoryComponent extends StatelessWidget {
                 Tab(text: 'الماركه'),
                 Tab(text: 'الوقود المستخدم'),
                 Tab(text: 'السنه'),
-                Tab(text: 'المدينه'),
               ],
             ),
             Expanded(

@@ -38,7 +38,7 @@ class SelectWithBudgetComponent extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           SizedBox(
-            height: 100.h,
+            height: 150.h,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,

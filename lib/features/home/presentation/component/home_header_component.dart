@@ -9,7 +9,12 @@ class HomeHeaderComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SvgPicture.asset('assets/images/home_logo.svg'),
+        SvgPicture.asset(
+          'assets/images/home_logo.svg',
+          height: 45,
+          width: 45,
+          color: AppColors.white,
+        ),
         Spacer(),
         Text('English', style: TextStyle(color: AppColors.white)),
       ],

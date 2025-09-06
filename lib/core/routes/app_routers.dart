@@ -15,7 +15,7 @@ import 'package:sear_soqe/features/onboarding/presentation/view/onboarding_view.
 import 'package:sear_soqe/splash_view.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: RouterNames.addCar,
+  initialLocation: RouterNames.splash,
 
   routes: [
     GoRoute(

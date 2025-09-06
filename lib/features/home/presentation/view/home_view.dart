@@ -29,7 +29,7 @@ class HomeView extends StatelessWidget {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 60.h),
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 35.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
