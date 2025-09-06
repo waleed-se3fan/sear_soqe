@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CarDetailCard extends StatelessWidget {
   final String imageUrl;
@@ -175,8 +176,8 @@ class CarDetailCard extends StatelessWidget {
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
-                    child: const Icon(
-                      Icons.whatshot_outlined,
+                    child: SvgPicture.asset(
+                      'assets/images/whatsapp.svg',
                       color: Colors.white,
                     ),
                   ),

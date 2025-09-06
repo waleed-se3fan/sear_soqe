@@ -96,6 +96,11 @@ class AppStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.white,
   );
+  static final ts16WhiteW400 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.white,
+  );
   static final ts16BlackW500 = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeight.w500,
@@ -188,6 +193,11 @@ class AppStyles {
   static final ts24Bold = TextStyle(
     fontSize: 24.sp,
     fontWeight: FontWeight.bold,
+  );
+  static final ts30WhiteW500 = TextStyle(
+    fontSize: 30.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.white,
   );
 
   // Specials

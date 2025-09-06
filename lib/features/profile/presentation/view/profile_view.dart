@@ -10,101 +10,97 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 16),
-              const ProfileHeaderWidget(),
-              const SizedBox(height: 16),
-              const SellYourCarWidget(),
-              const SizedBox(height: 24),
-              const ProfileSectionWidget(title: "إعلاناتي"),
-              ProfileTile(
-                title: "إعلاناتي",
-                icon: Icons.list_alt,
-                onTap: () {},
-              ),
+              SizedBox(height: 16),
+              ProfileHeaderWidget(),
+              SizedBox(height: 16),
+              SellYourCarWidget(),
+              SizedBox(height: 24),
+              ProfileSectionWidget(title: "إعلاناتي"),
+              ProfileTile(title: "إعلاناتي", icon: Icons.list_alt, onTap: null),
               ProfileTile(
                 title: "إعلاناتي المفضلة",
                 icon: Icons.favorite_border,
-                onTap: () {},
+                onTap: null,
               ),
-              ProfileTile(title: "بيع سيارتك", icon: Icons.add, onTap: () {}),
-              const SizedBox(height: 16),
-              const ProfileSectionWidget(title: "استكشف"),
+              ProfileTile(title: "بيع سيارتك", icon: Icons.add, onTap: null),
+              SizedBox(height: 16),
+              ProfileSectionWidget(title: "استكشف"),
               ProfileTile(
                 title: "دليل المشترين",
                 icon: Icons.menu_book_outlined,
-                onTap: () {},
+                onTap: null,
               ),
               ProfileTile(
                 title: "أخبار السيارات",
                 icon: Icons.newspaper,
-                onTap: () {},
+                onTap: null,
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
 
-              const ProfileSectionWidget(title: "إعدادات"),
+              ProfileSectionWidget(title: "إعدادات"),
               ProfileTile(
                 title: "اللغه",
                 icon: Icons.language,
                 secondary: "العربية",
-                onTap: () {},
+                onTap: null,
               ),
               ProfileTile(
                 title: "الدولة",
                 icon: Icons.location_on_outlined,
                 secondary: "السعودية",
-                onTap: () {},
+                onTap: null,
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
 
-              const ProfileSectionWidget(title: "الدعم"),
+              ProfileSectionWidget(title: "الدعم"),
               ProfileTile(
                 title: "من نحن",
                 icon: Icons.info_outline,
-                onTap: () {},
+                onTap: null,
               ),
-              ProfileTile(title: "اتصل بنا", icon: Icons.phone, onTap: () {}),
+              ProfileTile(title: "اتصل بنا", icon: Icons.phone, onTap: null),
               ProfileTile(
                 title: "اعلن معنا",
                 icon: Icons.campaign_outlined,
-                onTap: () {},
+                onTap: null,
               ),
               ProfileTile(
                 title: "حذف الحساب",
                 icon: Icons.delete_outline,
-                onTap: () {},
+                onTap: null,
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
 
-              const ProfileSectionWidget(title: "القوانين والأحكام"),
+              ProfileSectionWidget(title: "القوانين والأحكام"),
               ProfileTile(
                 title: "شروط الاستخدام",
                 icon: Icons.lock_outline,
-                onTap: () {},
+                onTap: null,
               ),
               ProfileTile(
                 title: "سياسة الخصوصية",
                 icon: Icons.privacy_tip_outlined,
-                onTap: () {},
+                onTap: null,
               ),
 
-              const SizedBox(height: 24),
+              SizedBox(height: 24),
               ProfileTile(
                 title: "تسجيل الخروج",
                 titleColor: Colors.red,
                 icon: Icons.logout,
-                onTap: () {},
+                onTap: null,
               ),
 
-              const SizedBox(height: 80),
+              SizedBox(height: 80),
             ],
           ),
         ),

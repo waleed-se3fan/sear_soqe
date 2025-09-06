@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
-import 'package:sear_soqe/features/home/presentation/view/home_view.dart';
 import 'package:sear_soqe/features/home/presentation/widgets/category_widget.dart';
 
 class SelectWithCategoryComponent extends StatelessWidget {
@@ -12,7 +11,7 @@ class SelectWithCategoryComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       initialIndex: 0,
-      length: 5,
+      length: 4,
 
       child: Container(
         height: 230.h,
@@ -51,7 +50,6 @@ class SelectWithCategoryComponent extends StatelessWidget {
                 Tab(text: 'الماركه'),
                 Tab(text: 'الوقود المستخدم'),
                 Tab(text: 'السنه'),
-                Tab(text: 'المدينه'),
               ],
             ),
             Expanded(

@@ -25,28 +25,23 @@ class SelectWithBudgetComponent extends StatelessWidget {
                 children: [
                   Text(
                     'استعراض الكل',
-                    style: TextStyle(color: Colors.blue, fontSize: 12.sp),
+                    style: TextStyle(color: Colors.blue, fontSize: 12),
                   ),
-                  Icon(
-                    Icons.arrow_forward_sharp,
-                    color: Colors.blue,
-                    size: 14.sp,
-                  ),
+                  Icon(Icons.arrow_forward_sharp, color: Colors.blue, size: 14),
                 ],
               ),
             ],
           ),
-          Text(
+          const Text(
             'ابحث عن سيارات بسعر محدد',
-            style: TextStyle(fontSize: 12.sp, color: AppColors.grey),
+            style: TextStyle(fontSize: 12, color: AppColors.grey),
           ),
-          SizedBox(height: 16.h),
-          Container(
-            height: 100.h,
+          const SizedBox(height: 16),
+          SizedBox(
+            height: 150.h,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
-              //  physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (c, i) {
                 return const CategoryWidget();
               },

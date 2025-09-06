@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sear_soqe/core/common/widgets/custom_text_form_field.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:sear_soqe/features/auth/presentation/view/reset_password_view.dart';

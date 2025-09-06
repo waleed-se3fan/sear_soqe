@@ -7,4 +7,7 @@ abstract class RouterNames {
   static const String registerWithPhone = '/registerWithPhone';
   static const String registerWithEmail = '/registerWithEmail';
   static const String selectYourCoubtry = '/selectYourCoubtry';
+  static const String addCar = '/addCar';
+  static const String congratulation = '/congratulation';
+  static const String filterCar = '/filterCar';
 }
