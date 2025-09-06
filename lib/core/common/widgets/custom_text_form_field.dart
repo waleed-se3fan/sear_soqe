@@ -22,6 +22,7 @@ class CustomTextFormField extends StatelessWidget {
   final double? horizontalPadding;
   final void Function(String)? onFieldSubmitted;
   final bool readOnly;
+  final void Function()? onTap;
   const CustomTextFormField({
     super.key,
     this.hintText,
@@ -42,11 +43,13 @@ class CustomTextFormField extends StatelessWidget {
     this.horizontalPadding,
     this.onFieldSubmitted,
     this.readOnly = false,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap: onTap,
       focusNode: FocusNode()..unfocus(),
       textAlign: TextAlign.right,
       autofillHints: autofillHints,

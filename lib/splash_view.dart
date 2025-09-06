@@ -11,23 +11,72 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _opacity;
+  late Animation<double> _scale;
+  late Animation<double> _rotation;
+
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 1), () {
-      context.go(RouterNames.onboarding);
-    });
     super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2000),
+    );
+
+    _opacity = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
+
+    _scale = Tween<double>(
+      begin: 0.5,
+      end: 1,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.elasticOut));
+
+    _rotation = Tween<double>(
+      begin: -0.2,
+      end: 0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
+
+    _controller.forward();
+
+    Future.delayed(const Duration(seconds: 3), () {
+      if (mounted) {
+        context.go(RouterNames.onboarding);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SvgPicture.asset(
-          'assets/images/splash.svg',
-          width: 141.w,
-          height: 131.h,
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (context, child) {
+            return Opacity(
+              opacity: _opacity.value,
+              child: Transform.scale(
+                scale: _scale.value,
+                child: Transform.rotate(angle: _rotation.value, child: child),
+              ),
+            );
+          },
+          child: SvgPicture.asset(
+            'assets/images/splash.svg',
+            width: 141.w,
+            height: 131.h,
+          ),
         ),
       ),
     );

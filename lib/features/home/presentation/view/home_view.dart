@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sear_soqe/core/common/widgets/custom_text_form_field.dart';
+import 'package:sear_soqe/core/routes/router_names.dart';
 import 'package:sear_soqe/features/home/presentation/component/country_search_component.dart';
 import 'package:sear_soqe/features/home/presentation/component/select_with_budget_component.dart';
 import 'package:sear_soqe/features/home/presentation/component/select_with_category_component.dart';
@@ -37,10 +39,16 @@ class HomeView extends StatelessWidget {
                     const SizedBox(height: 8),
 
                     const CountrySearchComponent(),
-                    const CustomTextFormField(
+
+                    CustomTextFormField(
                       hintText: 'ابحث عن سيارات مستعملة هنا ..',
                       suffixIcon: Icon(CupertinoIcons.search),
+                      readOnly: true,
+                      onTap: () {
+                        context.push(RouterNames.filterCar);
+                      },
                     ),
+
                     const SizedBox(height: 10),
                     const HomeActionsWidget(),
                   ],

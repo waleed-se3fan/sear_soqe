@@ -10,6 +10,7 @@ import 'package:sear_soqe/features/auth/presentation/view/choose_country_view.da
 import 'package:sear_soqe/features/auth/presentation/view/register/register_with_email_view.dart';
 import 'package:sear_soqe/features/auth/presentation/view/register/register_with_phone_view.dart';
 import 'package:sear_soqe/features/bottom_nav_bar_view.dart';
+import 'package:sear_soqe/features/filter_car/presentation/view/filter_view.dart';
 import 'package:sear_soqe/features/home/presentation/view/home_view.dart';
 import 'package:sear_soqe/features/onboarding/presentation/view/onboarding_view.dart';
 import 'package:sear_soqe/splash_view.dart';
@@ -79,6 +80,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: RouterNames.congratulation,
       builder: (context, state) => const CongratulationView(),
+    ),
+    GoRoute(
+      path: RouterNames.filterCar,
+      builder: (context, state) => const FilterCarView(),
     ),
   ],
 );

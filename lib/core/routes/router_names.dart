@@ -8,4 +8,5 @@ abstract class RouterNames {
   static const String selectYourCoubtry = '/selectYourCoubtry';
   static const String addCar = '/addCar';
   static const String congratulation = '/congratulation';
+  static const String filterCar = '/filterCar';
 }
