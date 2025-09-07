@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:sear_soqe/features/details/presentation/widgets/car_basic_info_card.dart';
 import 'package:sear_soqe/features/details/presentation/widgets/car_title_and_pricee.dart';
+import 'package:sear_soqe/features/details/presentation/widgets/custom_devider.dart';
 
 class OverlappingCarDetailsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: -120,
+      bottom: -165,
       left: 0,
       right: 0,
       child: Container(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(17),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -29,13 +30,11 @@ class OverlappingCarDetailsCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Car Title and Price
             CarTitleAndPrice(),
             
-            SizedBox(height: 16),
             
-            // Car Basic Info Cards
             CarBasicInfoCards(),
+            CustomDivider()
           ],
         ),
       ),

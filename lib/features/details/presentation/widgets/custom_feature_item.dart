@@ -9,7 +9,7 @@ class CustomFeatureItem extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 2),
       child: Row(
         children: [
-          Icon(Icons.check_circle, color: Colors.green, size: 16),
+          Icon(Icons.check_circle_outline, color: Colors.grey, size: 16),
           SizedBox(width: 8),
           Text(
             feature,

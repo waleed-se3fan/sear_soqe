@@ -10,4 +10,6 @@ abstract class RouterNames {
   static const String addCar = '/addCar';
   static const String congratulation = '/congratulation';
   static const String filterCar = '/filterCar';
+  static const String featuresPage = '/featuresPage';
+  static const String detailedGridPage = '/detailedGridPage';
 }

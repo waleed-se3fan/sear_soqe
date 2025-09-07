@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class CustomDetailedCard extends StatelessWidget {
   const CustomDetailedCard({
     super.key,
-    required this.icon,
+     this.icon,
     required this.title, this.onTap, this.color,
   });
 
-  final IconData icon;
+  final IconData? icon;
   final Color? color;
   final String title;
   final void Function()? onTap;
