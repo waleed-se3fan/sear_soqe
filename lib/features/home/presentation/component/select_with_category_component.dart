@@ -12,7 +12,6 @@ class SelectWithCategoryComponent extends StatelessWidget {
     return DefaultTabController(
       initialIndex: 0,
       length: 4,
-
       child: Container(
         height: 230.h,
         padding: EdgeInsets.only(right: 14.w, top: 10.h),

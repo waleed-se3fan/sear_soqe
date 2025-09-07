@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CarImageIcons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -20,6 +20,29 @@ class CarImageIcons extends StatelessWidget {
             top: 0,
             child: _buildCircleIcon(Icons.arrow_back_ios_new, () {}),
           ),
+          Positioned(
+            left: 280,
+            top: 140,
+            child:
+           Container(
+  height: 27.h,
+  width: 50.h,
+  decoration: BoxDecoration(
+    color: Color(0xFF4044C9),
+    borderRadius: BorderRadius.circular(6), // لو عايز زوايا مدورة
+  ),
+  child: Center(
+    child: Text(
+      "مميز",
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 14.sp,
+      ),
+    ),
+  ),
+)
+
+          )
         ],
       ),
     );

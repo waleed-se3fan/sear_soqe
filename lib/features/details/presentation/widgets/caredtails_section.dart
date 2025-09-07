@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sear_soqe/features/details/presentation/components/car_deatils_card.dart';
 import 'package:sear_soqe/features/details/presentation/components/car_feature_section.dart';
 import 'package:sear_soqe/features/details/presentation/widgets/custom_button.dart';
+import 'package:sear_soqe/features/details/presentation/widgets/custom_devider.dart';
 
 class CarDetailsSection extends StatelessWidget {
   @override
@@ -28,8 +29,9 @@ class CarDetailsSection extends StatelessWidget {
           
           // Show All Specifications Button
           ShowAllSpecificationsButton(),
-          
-          SizedBox(height: 25),
+           
+          SizedBox(height: 10),
+          CustomDivider(),
         ],
       ),
     );

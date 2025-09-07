@@ -52,6 +52,7 @@ dependencies:
   pin_code_fields: ^8.0.1
   firebase_core: ^4.0.0
   firebase_database: 
+  image_picker: ^1.2.0
 
 dev_dependencies:
   flutter_test:

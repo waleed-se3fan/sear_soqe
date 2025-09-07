@@ -7,11 +7,13 @@ import 'package:sear_soqe/core/common/widgets/custom_text_form_field.dart';
 import 'package:sear_soqe/core/functions/show_exit_panel.dart';
 import 'package:sear_soqe/core/functions/show_toast.dart';
 import 'package:sear_soqe/core/routes/router_names.dart';
+import 'package:sear_soqe/core/services/image_picker_service.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:sear_soqe/core/utils/app_styles.dart';
 import 'package:sear_soqe/features/add_car/presentation/logic/cubit/add_car_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sear_soqe/features/home/presentation/widgets/category_widget.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddCarView extends StatelessWidget {
   const AddCarView({super.key});
@@ -886,37 +888,45 @@ class AddCarByAddingImagesComponent extends StatelessWidget {
           widget: ListView(
             shrinkWrap: true,
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
+              InkWell(
+                onTap: () {
+                  ImagePickerService().pickImageFromGallery();
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
 
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.grey),
-                ),
-                height: 150,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [Icon(Icons.add), Text('الصورة الرئيسيه')],
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey),
+                  ),
+                  height: 150,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [Icon(Icons.add), Text('الصورة الرئيسيه')],
+                  ),
                 ),
               ),
               SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
 
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.grey),
-                    ),
-                    height: 150,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.grey),
+                      ),
+                      height: 150,
 
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [Icon(Icons.add), Text('الصورة الرئيسيه')],
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [Icon(Icons.add), Text('الصورة الرئيسيه')],
+                      ),
                     ),
                   ),
                   Container(

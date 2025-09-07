@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sear_soqe/features/home/presentation/view/home_view.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sear_soqe/core/routes/router_names.dart';
 import 'package:sear_soqe/features/home/presentation/widgets/home_option_widget.dart';
 
 class HomeActionsWidget extends StatelessWidget {
@@ -19,6 +20,9 @@ class HomeActionsWidget extends StatelessWidget {
             HomeOptionWidget(
               image: 'assets/images/car-key.png',
               title: 'بيع سيارة',
+              onTap: () {
+                context.go(RouterNames.addCar);
+              },
             ),
           ],
         ),

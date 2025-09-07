@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sear_soqe/features/details/presentation/components/seller_info_card.dart';
+import 'package:sear_soqe/features/details/presentation/widgets/custom_devider.dart';
 
 class CarDescriptionSection extends StatelessWidget {
   @override
@@ -7,7 +8,7 @@ class CarDescriptionSection extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -38,6 +39,7 @@ class CarDescriptionSection extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
+            CustomDivider(),
             SellerInfoCard(
              
             )

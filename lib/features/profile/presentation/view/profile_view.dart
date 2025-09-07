@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sear_soqe/core/routes/router_names.dart';
-import 'package:sear_soqe/features/car_details/presentation/view/car_details_view.dart';
 import 'package:sear_soqe/features/profile/presentation/widgets/profile_header_widget.dart';
 import 'package:sear_soqe/features/profile/presentation/widgets/profile_section_widget.dart';
 import 'package:sear_soqe/features/profile/presentation/widgets/profile_tile.dart';
