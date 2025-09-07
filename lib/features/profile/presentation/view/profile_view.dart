@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sear_soqe/core/routes/router_names.dart';
 import 'package:sear_soqe/features/car_details/presentation/view/car_details_view.dart';
 import 'package:sear_soqe/features/profile/presentation/widgets/profile_header_widget.dart';
 import 'package:sear_soqe/features/profile/presentation/widgets/profile_section_widget.dart';
@@ -10,7 +12,7 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 16),
@@ -23,11 +25,15 @@ class ProfileView extends StatelessWidget {
               SellYourCarWidget(),
               SizedBox(height: 24),
               ProfileSectionWidget(title: "إعلاناتي"),
-              ProfileTile(title: "إعلاناتي", icon: Icons.list_alt, onTap: null),
+              ProfileTile(
+                title: "إعلاناتي",
+                icon: Icons.list_alt,
+                onTap: () => context.go(RouterNames.myAds),
+              ),
               ProfileTile(
                 title: "إعلاناتي المفضلة",
                 icon: Icons.favorite_border,
-                onTap: null,
+                onTap: () => context.go(RouterNames.myAds),
               ),
               ProfileTile(title: "بيع سيارتك", icon: Icons.add, onTap: null),
               SizedBox(height: 16),

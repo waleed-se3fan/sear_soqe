@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class CarDetailScreen extends StatelessWidget {
   const CarDetailScreen({super.key});
@@ -16,21 +17,18 @@ class CarDetailScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Car Image Section with overlapping details
                     CarImageSection(),
-                    
+
                     SizedBox(height: 120),
-                    
-                    // Car Details and Features Section
+
                     CarDetailsSection(),
-                    
-                    // Car Description Section
+
                     CarDescriptionSection(),
                   ],
                 ),
               ),
             ),
-            
+
             // Bottom Action Buttons
             BottomActionButtons(),
           ],
@@ -49,10 +47,10 @@ class CarImageSection extends StatelessWidget {
       children: [
         // Car Image
         CarImageWidget(),
-        
+
         // Overlapping Icons on Image
         CarImageIcons(),
-        
+
         // Overlapping Car Details Card
         OverlappingCarDetailsCard(),
       ],
@@ -103,16 +101,13 @@ class CarImageIcons extends StatelessWidget {
       ),
     );
   }
-  
+
   Widget _buildCircleIcon(IconData icon, VoidCallback onTap) {
     return InkWell(
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          shape: BoxShape.circle,
-        ),
+        decoration: BoxDecoration(color: Colors.white, shape: BoxShape.circle),
         child: Icon(icon, color: Colors.black, size: 20),
       ),
     );
@@ -149,9 +144,9 @@ class OverlappingCarDetailsCard extends StatelessWidget {
           children: [
             // Car Title and Price
             CarTitleAndPrice(),
-            
+
             SizedBox(height: 16),
-            
+
             // Car Basic Info Cards
             CarBasicInfoCards(),
           ],
@@ -170,10 +165,7 @@ class CarTitleAndPrice extends StatelessWidget {
       children: [
         Text(
           'تويوتا كامري 1.5 تربو GLX 2024',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           textAlign: TextAlign.right,
         ),
         SizedBox(height: 8),
@@ -197,13 +189,19 @@ class CarBasicInfoCards extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(child: _buildInfoCard(Icons.settings, 'اوتوماتيك', 'ناقل الحركة')),
+        Expanded(
+          child: _buildInfoCard(Icons.settings, 'اوتوماتيك', 'ناقل الحركة'),
+        ),
         SizedBox(width: 8),
-        Expanded(child: _buildInfoCard(Icons.local_gas_station, 'بنزين', 'نوع الوقود')),
+        Expanded(
+          child: _buildInfoCard(Icons.local_gas_station, 'بنزين', 'نوع الوقود'),
+        ),
         SizedBox(width: 8),
         Expanded(child: _buildInfoCard(Icons.speed, '54,555 كم', '')),
         SizedBox(width: 8),
-        Expanded(child: _buildInfoCard(Icons.calendar_today, '2019', 'سنة الصنع')),
+        Expanded(
+          child: _buildInfoCard(Icons.calendar_today, '2019', 'سنة الصنع'),
+        ),
       ],
     );
   }
@@ -233,10 +231,7 @@ class CarBasicInfoCards extends StatelessWidget {
             SizedBox(height: 2),
             Text(
               subtitle,
-              style: TextStyle(
-                fontSize: 8,
-                color: Colors.grey[600],
-              ),
+              style: TextStyle(fontSize: 8, color: Colors.grey[600]),
               textAlign: TextAlign.center,
             ),
           ],
@@ -258,22 +253,22 @@ class CarDetailsSection extends StatelessWidget {
         children: [
           // Saved Memory Text
           SavedMemoryText(),
-          
+
           SizedBox(height: 16),
-          
+
           // Car Details Cards Section
           CarDetailsCards(),
-          
+
           SizedBox(height: 16),
-          
+
           // Features Section
           CarFeaturesSection(),
-          
+
           SizedBox(height: 16),
-          
+
           // Show All Specifications Button
           ShowAllSpecificationsButton(),
-          
+
           SizedBox(height: 25),
         ],
       ),
@@ -287,10 +282,7 @@ class SavedMemoryText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       'الذاكرة المحفوظة',
-      style: TextStyle(
-        fontSize: 14,
-        color: Colors.grey[600],
-      ),
+      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
     );
   }
 }
@@ -304,23 +296,26 @@ class CarDetailsCards extends StatelessWidget {
       children: [
         Text(
           'تفاصيل السيارة',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        
+
         SizedBox(height: 12),
-        
+
         Row(
           children: [
             Expanded(child: _buildDetailCard(Icons.add, '12+ المزيد', '')),
             SizedBox(width: 12),
-            Expanded(child: _buildDetailCard(Icons.camera_alt, 'أوتوماتيك', '')),
+            Expanded(
+              child: _buildDetailCard(Icons.camera_alt, 'أوتوماتيك', ''),
+            ),
             SizedBox(width: 12),
-            Expanded(child: _buildDetailCard(Icons.color_lens, 'اللون', 'بيروز')),
+            Expanded(
+              child: _buildDetailCard(Icons.color_lens, 'اللون', 'بيروز'),
+            ),
             SizedBox(width: 12),
-            Expanded(child: _buildDetailCard(Icons.location_on, 'الموقع', 'القاهرة')),
+            Expanded(
+              child: _buildDetailCard(Icons.location_on, 'الموقع', 'القاهرة'),
+            ),
           ],
         ),
       ],
@@ -360,10 +355,7 @@ class CarDetailsCards extends StatelessWidget {
             SizedBox(height: 4),
             Text(
               subtitle,
-              style: TextStyle(
-                fontSize: 10,
-                color: Colors.black,
-              ),
+              style: TextStyle(fontSize: 10, color: Colors.black),
               textAlign: TextAlign.center,
             ),
           ],
@@ -382,10 +374,7 @@ class CarFeaturesSection extends StatelessWidget {
       children: [
         Text(
           'المواصفات:',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         SizedBox(height: 8),
         _buildFeatureItem('ABS'),
@@ -403,10 +392,7 @@ class CarFeaturesSection extends StatelessWidget {
         children: [
           Icon(Icons.check_circle, color: Colors.green, size: 16),
           SizedBox(width: 8),
-          Text(
-            feature,
-            style: TextStyle(fontSize: 14),
-          ),
+          Text(feature, style: TextStyle(fontSize: 14)),
         ],
       ),
     );
@@ -454,10 +440,7 @@ class CarDescriptionSection extends StatelessWidget {
           children: [
             Text(
               'وصف:',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text(
@@ -479,9 +462,7 @@ class CarDescriptionSection extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            SellerInfoCard(
-             
-            )
+            SellerInfoCard(),
           ],
         ),
       ),
@@ -500,9 +481,7 @@ class BottomActionButtons extends StatelessWidget {
         children: [
           Expanded(
             child: ElevatedButton.icon(
-              onPressed: () {
-               
-              },
+              onPressed: () {},
               label: Text('رسالة', style: TextStyle(color: Color(0xFF4044C9))),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
@@ -548,36 +527,31 @@ class BottomActionButtons extends StatelessWidget {
   }
 }
 
-
 class SellerInfoCard extends StatelessWidget {
-
-
-  const SellerInfoCard({
-    super.key,
-    
-  });
+  const SellerInfoCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.all(16),
+      padding: EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
             'معلومات البائع',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
           ),
           const SizedBox(height: 16),
-          
+
           Row(
             children: [
               CircleAvatar(
                 radius: 30,
-                child: SvgPicture.asset('assets/images/logo.svg', width: 60, height: 60),
+                child: SvgPicture.asset(
+                  'assets/images/logo.svg',
+                  width: 60,
+                  height: 60,
+                ),
                 backgroundColor: Colors.transparent,
               ),
               const SizedBox(width: 16),
@@ -596,10 +570,10 @@ class SellerInfoCard extends StatelessWidget {
                     const SizedBox(height: 16),
                     Row(
                       children: [
-                          Icon(Icons.location_on_outlined, size: 16, ),
-                          const SizedBox(width: 5),
+                        Icon(Icons.location_on_outlined, size: 16),
+                        const SizedBox(width: 5),
                         const Text(
-                         'الموقع الخاص به ',
+                          'الموقع الخاص به ',
                           style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
@@ -610,30 +584,30 @@ class SellerInfoCard extends StatelessWidget {
                   ],
                 ),
               ),
+
               // زر العرض
-             
             ],
           ),
           const SizedBox(height: 23),
           Container(
-        width: double.infinity,
-        padding: EdgeInsets.symmetric(vertical: 12),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.blue[300]!),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Text(
-          'اعرض حساب البائع واعلاناتة الخاصة',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.blue[600],
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(vertical: 12),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.blue[300]!),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Text(
+              'اعرض حساب البائع واعلاناتة الخاصة',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.blue[600],
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           ),
-        ),
+        ],
       ),
-    ],
-  ),
-);
+    );
   }
 }

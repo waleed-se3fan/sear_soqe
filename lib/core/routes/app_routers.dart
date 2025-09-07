@@ -10,6 +10,7 @@ import 'package:sear_soqe/core/routes/router_names.dart';
 import 'package:sear_soqe/features/add_car/presentation/logic/cubit/add_car_cubit.dart';
 import 'package:sear_soqe/features/add_car/presentation/view/add_car_view.dart';
 import 'package:sear_soqe/features/add_car/presentation/view/congratulation_view.dart';
+import 'package:sear_soqe/features/add_car/presentation/view/my_ads_view.dart';
 import 'package:sear_soqe/features/auth/presentation/view/choose_country_view.dart';
 import 'package:sear_soqe/features/auth/presentation/view/register/register_with_email_view.dart';
 import 'package:sear_soqe/features/auth/presentation/view/register/register_with_phone_view.dart';
@@ -21,7 +22,7 @@ import 'package:sear_soqe/features/onboarding/presentation/view/onboarding_view.
 import 'package:sear_soqe/splash_view.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: RouterNames.carDetail,
+  initialLocation: RouterNames.splash,
 
   routes: [
     GoRoute(
@@ -31,10 +32,8 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: RouterNames.onboarding,
       builder: (context, state) => const OnboardingView(),
-    ), GoRoute(
-      path: RouterNames.carDetail,
-      builder: (context, state) => const CarDetailScreen(),
     ),
+
     GoRoute(
       path: RouterNames.home,
       builder: (context, state) => const HomeView(),
@@ -92,6 +91,14 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: RouterNames.filterCar,
       builder: (context, state) => const FilterCarView(),
+    ),
+    GoRoute(
+      path: RouterNames.carDetail,
+      builder: (context, state) => const CarDetailScreen(),
+    ),
+    GoRoute(
+      path: RouterNames.myAds,
+      builder: (context, state) => const MyAdsView(),
     ),
   ],
 );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sear_soqe/core/routes/router_names.dart';
 import 'package:sear_soqe/features/favourite/presentation/widgets/favourite_card_widget.dart';
 
 class FavouriteView extends StatelessWidget {
@@ -23,14 +25,19 @@ class FavouriteView extends StatelessWidget {
         child: ListView.builder(
           itemCount: 3,
           itemBuilder: (context, index) {
-            return CarDetailCard(
-              imageUrl: 'assets/images/popular-car.png',
-              title: 'تويوتا',
-              price: '100000',
-              city: 'القاهرة',
-              km: '10000',
-              fuel: 'بنزين',
-              year: '2020',
+            return InkWell(
+              onTap: () {
+                context.push(RouterNames.carDetail);
+              },
+              child: CarDetailCard(
+                imageUrl: 'assets/images/popular-car.png',
+                title: 'تويوتا',
+                price: '100000',
+                city: 'القاهرة',
+                km: '10000',
+                fuel: 'بنزين',
+                year: '2020',
+              ),
             );
           },
         ),
