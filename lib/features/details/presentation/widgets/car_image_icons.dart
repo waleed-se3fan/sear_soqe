@@ -16,9 +16,11 @@ class CarImageIcons extends StatelessWidget {
             child: _buildCircleIcon(Icons.share, () {}),
           ),
           Positioned(
-            left: 290,
+            left: 300,
             top: 0,
-            child: _buildCircleIcon(Icons.arrow_back_ios_new, () {}),
+            child: _buildCircleIcon(Icons.arrow_back_ios_new, () {
+              Navigator.of(context).pop();
+            }),
           ),
           Positioned(
             left: 280,
