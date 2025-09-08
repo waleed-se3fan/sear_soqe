@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,6 +34,7 @@ class SelectWithCategoryComponent extends StatelessWidget {
               style: TextStyle(color: AppColors.grey, fontSize: 12.sp),
             ),
             SizedBox(height: 10.h),
+
             TabBar(
               indicatorColor: AppColors.primaryColor,
               labelColor: AppColors.primaryColor,

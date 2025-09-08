@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:sear_soqe/core/data/cached/cache_helper.dart';
 import 'package:sear_soqe/core/routes/app_routers.dart';
@@ -5,7 +6,6 @@ import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sear_soqe/firebase_options.dart';
-
 // Future<String> checkPaidStatus() async {
 //   DatabaseReference ref = FirebaseDatabase.instance.ref();
 
@@ -16,11 +16,19 @@ import 'package:sear_soqe/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
 
   CacheHelper.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(const MyApp());
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [Locale('ar'), Locale('en')],
+      path: 'assets/translation',
+      fallbackLocale: const Locale('ar'),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -35,13 +43,15 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         routerConfig: router,
         debugShowCheckedModeBanner: false,
+        locale: context.locale,
+        supportedLocales: context.supportedLocales,
+        localizationsDelegates: context.localizationDelegates,
         theme: ThemeData(
           fontFamily: 'IBMPlexSansArabic',
           primaryColor: AppColors.primaryColor,
           scaffoldBackgroundColor: Colors.white,
         ),
-        builder: (context, child) =>
-            Directionality(textDirection: TextDirection.rtl, child: child!),
+        builder: (context, child) => child!,
       ),
     );
   }
