@@ -10,7 +10,7 @@ import 'package:sear_soqe/features/auth/presentation/widgets/custom_footer_widge
 
 Future<void> verifyPhoneNumber(context) async {
   await FirebaseAuth.instance.verifyPhoneNumber(
-    phoneNumber: '01029673915',
+    phoneNumber: '+201029673915',
     verificationCompleted: (PhoneAuthCredential credential) async {
       // إذا تم التحقق بنجاح
       UserCredential userCredential = await FirebaseAuth.instance
