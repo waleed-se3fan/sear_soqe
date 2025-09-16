@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sear_soqe/core/utils/app_styles.dart';
 
 import 'package:sear_soqe/features/auth/presentation/components/register/register_with_email_component.dart';
 import 'package:sear_soqe/features/auth/presentation/widgets/custom_header_widget.dart';
@@ -21,11 +22,7 @@ class RegisterWithEmailView extends StatelessWidget {
               SizedBox(height: 20.h),
               Text(
                 'سوف تستخدم هذا البريد الالكتروني للدخول للتطبيق واستعاده البريد الالكتروني',
-                style: TextStyle(
-                  fontSize: 13.sp,
-                  height: 1.2,
-                  color: Colors.black45,
-                ),
+                style: AppStyles.ts12GreyW400,
               ),
               SizedBox(height: 20.h),
               RegisterWithEmailComponent(),

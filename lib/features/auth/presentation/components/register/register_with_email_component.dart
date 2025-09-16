@@ -13,10 +13,17 @@ class RegisterWithEmailComponent extends StatelessWidget {
     return Expanded(
       child: Column(
         children: [
-          CustomTextFormField(
+          const CustomTextFormField(
             hintText: 'ادخل البريد الالكتروني',
             fillColor: AppColors.lightGrey,
             keyboardType: TextInputType.emailAddress,
+          ),
+          SizedBox(height: 20.h),
+          const CustomTextFormField(
+            hintText: 'ادخل كلمة المرور',
+            fillColor: AppColors.lightGrey,
+            keyboardType: TextInputType.emailAddress,
+            isPassword: true,
           ),
           SizedBox(height: 20.h),
           Spacer(),

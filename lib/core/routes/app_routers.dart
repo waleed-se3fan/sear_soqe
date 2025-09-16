@@ -110,5 +110,9 @@ final GoRouter router = GoRouter(
       path: RouterNames.myAds,
       builder: (context, state) => const MyAdsView(),
     ),
+    GoRoute(
+      path: RouterNames.registerWithEmail,
+      builder: (context, state) => const RegisterWithEmailView(),
+    ),
   ],
 );

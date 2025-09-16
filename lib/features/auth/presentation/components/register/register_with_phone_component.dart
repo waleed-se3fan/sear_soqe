@@ -1,11 +1,68 @@
 import 'package:country_picker/country_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sear_soqe/core/common/widgets/custom_text_form_field.dart';
+import 'package:sear_soqe/core/services/firestore_database_service.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sear_soqe/features/auth/presentation/view/verification_view.dart';
 import 'package:sear_soqe/features/auth/presentation/widgets/custom_footer_widget.dart';
+
+Future<void> verifyPhoneNumber(context) async {
+  await FirebaseAuth.instance.verifyPhoneNumber(
+    phoneNumber: '01029673915',
+    verificationCompleted: (PhoneAuthCredential credential) async {
+      // إذا تم التحقق بنجاح
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithCredential(credential);
+      print("تم التسجيل بنجاح: ${userCredential.user!.phoneNumber}");
+    },
+    verificationFailed: (FirebaseAuthException e) {
+      // في حالة الفشل
+      print("فشل التحقق: ${e.message}");
+    },
+    codeSent: (String verificationId, int? resendToken) {
+      // عند إرسال رمز التحقق
+      showDialog(
+        context: context,
+        builder: (context) {
+          String smsCode = "";
+          return AlertDialog(
+            title: Text("أدخل رمز التحقق"),
+            content: TextField(
+              onChanged: (value) {
+                smsCode = value;
+              },
+            ),
+            actions: [
+              TextButton(
+                onPressed: () async {
+                  // إنشاء credential باستخدام رمز التحقق
+                  PhoneAuthCredential credential = PhoneAuthProvider.credential(
+                    verificationId: verificationId,
+                    smsCode: smsCode,
+                  );
+                  // التحقق من الرمز
+                  UserCredential userCredential = await FirebaseAuth.instance
+                      .signInWithCredential(credential);
+                  print(
+                    "تم التسجيل بنجاح: ${userCredential.user!.phoneNumber}",
+                  );
+                  Navigator.of(context).pop();
+                },
+                child: Text("تأكيد"),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    codeAutoRetrievalTimeout: (String verificationId) {
+      // عند انتهاء وقت التحقق التلقائي
+      print("انتهى الوقت");
+    },
+  );
+}
 
 class RegisterWithPhoneComponent extends StatelessWidget {
   const RegisterWithPhoneComponent({super.key});
@@ -55,15 +112,8 @@ class RegisterWithPhoneComponent extends StatelessWidget {
           SizedBox(height: 20.h),
           Spacer(),
           CustomFooterWidget(
-            onTapTitle: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (c) {
-                    return VerificationView();
-                  },
-                ),
-              );
+            onTapTitle: () async {
+              verifyPhoneNumber(context);
             },
             progress: 0.3,
             title: 'المتابعه',
