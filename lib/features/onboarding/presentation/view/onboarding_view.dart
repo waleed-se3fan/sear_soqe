@@ -16,12 +16,13 @@ class OnboardingView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 40.h),
+              SizedBox(height: 30.h),
               HeaderWidget(),
               SizedBox(height: 8.h),
               PageViewComponent(),
               SizedBox(height: 15.h),
               ActionsWidget(),
+              SizedBox(height: 20.h),
             ],
           ),
         ),

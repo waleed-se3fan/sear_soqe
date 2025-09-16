@@ -11,9 +11,12 @@ import 'package:sear_soqe/features/add_car/presentation/logic/cubit/add_car_cubi
 import 'package:sear_soqe/features/add_car/presentation/view/add_car_view.dart';
 import 'package:sear_soqe/features/add_car/presentation/view/congratulation_view.dart';
 import 'package:sear_soqe/features/add_car/presentation/view/my_ads_view.dart';
+import 'package:sear_soqe/features/auth/presentation/logic/cubit/auth_cubit.dart';
 import 'package:sear_soqe/features/auth/presentation/view/choose_country_view.dart';
+import 'package:sear_soqe/features/auth/presentation/view/login/login_with_email_view.dart';
 import 'package:sear_soqe/features/auth/presentation/view/register/register_with_email_view.dart';
 import 'package:sear_soqe/features/auth/presentation/view/register/register_with_phone_view.dart';
+import 'package:sear_soqe/features/auth/presentation/view/verification_view.dart';
 import 'package:sear_soqe/features/bottom_nav_bar_view.dart';
 import 'package:sear_soqe/features/details/presentation/views/car_detail_view.dart';
 import 'package:sear_soqe/features/details/presentation/views/features_page.dart';
@@ -36,7 +39,10 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: RouterNames.onboarding,
-      builder: (context, state) => const OnboardingView(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => AuthCubit(),
+        child: const OnboardingView(),
+      ),
     ),
 
     GoRoute(
@@ -56,11 +62,25 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: RouterNames.registerWithEmail,
-      builder: (context, state) => RegisterWithEmailView(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => AuthCubit(),
+        child: RegisterWithEmailView(),
+      ),
+    ),
+    GoRoute(
+      path: RouterNames.login_with_email,
+      builder: (context, state) => BlocProvider(
+        create: (context) => AuthCubit(),
+        child: LoginWithEmailView(),
+      ),
     ),
     GoRoute(
       path: RouterNames.selectYourCoubtry,
       builder: (context, state) => const ChooseCountryView(),
+    ),
+    GoRoute(
+      path: RouterNames.verify_email,
+      builder: (context, state) => const VerificationView(),
     ),
     GoRoute(
       path: RouterNames.addCar,

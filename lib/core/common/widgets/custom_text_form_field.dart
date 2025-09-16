@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../theme/app_colors.dart';
 import '../../utils/app_styles.dart';
 
-class CustomTextFormField extends StatelessWidget {
+class CustomTextFormField extends StatefulWidget {
   final String? hintText;
   final bool obscureText;
   final TextEditingController? controller;
@@ -13,7 +13,6 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final Color? fillColor;
-  final void Function()? toggleObscure;
   final TextInputType? keyboardType;
   final String? labelText;
   final void Function(String)? onchanged;
@@ -34,7 +33,6 @@ class CustomTextFormField extends StatelessWidget {
     this.fillColor,
     this.prefixIcon,
     this.isPassword = false,
-    this.toggleObscure,
     this.keyboardType,
     this.labelText,
     this.onchanged,
@@ -47,41 +45,51 @@ class CustomTextFormField extends StatelessWidget {
   });
 
   @override
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
+}
+
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  bool obscureText = false;
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onTap: onTap,
+      onTap: widget.onTap,
       focusNode: FocusNode()..unfocus(),
       textAlign: TextAlign.right,
-      autofillHints: autofillHints,
-      controller: controller,
-      obscureText: obscureText,
-      keyboardType: keyboardType,
+      autofillHints: widget.autofillHints,
+      controller: widget.controller,
+      obscureText: widget.isPassword ? !obscureText : widget.obscureText,
+      keyboardType: widget.keyboardType,
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(
-          vertical: verticalPadding ?? 18.0.w,
-          horizontal: horizontalPadding ?? 12.0.w,
+          vertical: widget.verticalPadding ?? 18.0.w,
+          horizontal: widget.horizontalPadding ?? 12.0.w,
         ),
-        hintText: hintText,
+        hintText: widget.hintText,
 
         hintStyle: AppStyles.ts14BlackW500.copyWith(color: AppColors.greyText),
-        fillColor: fillColor ?? AppColors.white,
+        fillColor: widget.fillColor ?? AppColors.white,
         filled: true,
-        labelText: labelText,
+        labelText: widget.labelText,
         labelStyle: AppStyles.ts12GreyW400.copyWith(color: AppColors.grey),
-        suffixIcon: isPassword
+        suffixIcon: widget.isPassword
             ? IconButton(
-                onPressed: toggleObscure,
+                onPressed: () {
+                  setState(() {
+                    obscureText = !obscureText;
+                  });
+                },
                 icon: Visibility(
                   visible: obscureText,
-                  replacement: const Icon(Icons.visibility_outlined),
-                  child: const Icon(Icons.visibility_off_outlined),
+                  child: const Icon(Icons.visibility_outlined),
+                  replacement: const Icon(Icons.visibility_off_outlined),
                 ),
                 color: AppColors.grey,
               )
-            : suffixIcon,
+            : widget.suffixIcon,
 
-        prefixIcon: prefixIcon,
+        prefixIcon: widget.prefixIcon,
         border: InputBorder.none,
 
         enabledBorder: OutlineInputBorder(
@@ -97,11 +105,11 @@ class CustomTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.0.r),
         ),
       ),
-      validator: validator ?? (value) => null,
-      onChanged: onchanged,
-      onFieldSubmitted: onFieldSubmitted,
-      maxLines: maxLines,
-      readOnly: readOnly,
+      validator: widget.validator ?? (value) => null,
+      onChanged: widget.onchanged,
+      onFieldSubmitted: widget.onFieldSubmitted,
+      maxLines: widget.maxLines,
+      readOnly: widget.readOnly,
     );
   }
 }

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sear_soqe/core/routes/router_names.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
+import 'package:sear_soqe/features/auth/presentation/logic/cubit/auth_cubit.dart';
 import 'package:sear_soqe/features/auth/presentation/view/login/login_with_phone_view.dart';
 import 'package:sear_soqe/features/auth/presentation/view/login/login_with_email_view.dart';
 import 'package:sear_soqe/features/auth/presentation/view/register/register_with_email_view.dart';
@@ -62,15 +66,10 @@ showModalBottom(BuildContext context, {required bool isLogin}) {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (c) {
-                      return isLogin
-                          ? LoginWithEmailView()
-                          : RegisterWithEmailView();
-                    },
-                  ),
+                context.push(
+                  isLogin
+                      ? RouterNames.login_with_email
+                      : RouterNames.registerWithEmail,
                 );
               },
               child: Padding(
