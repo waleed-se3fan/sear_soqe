@@ -8,8 +8,6 @@ import 'package:sear_soqe/core/functions/show_toast.dart';
 import 'package:sear_soqe/core/routes/router_names.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:sear_soqe/features/auth/presentation/logic/cubit/auth_cubit.dart';
-import 'package:sear_soqe/features/auth/presentation/view/choose_country_view.dart';
-import 'package:sear_soqe/features/auth/presentation/view/forget_password_view.dart';
 import 'package:sear_soqe/features/auth/presentation/widgets/custom_footer_widget.dart';
 
 class LoginWithEmailComponent extends StatelessWidget {
@@ -68,36 +66,46 @@ class LoginWithEmailComponent extends StatelessWidget {
                   showToast(message: state.message, state: ToastStates.ERROR);
                 } else if (state is SignInWithEmailAndPasswordSuccess) {
                   showToast(message: state.message, state: ToastStates.SUCCESS);
-                  context.go(RouterNames.selectYourCoubtry);
+                  context.go(RouterNames.bottomNavBar);
                 }
               },
               builder: (context, state) {
-                return CustomFooterWidget(
-                  progress: 1,
-                  trailing: Text('نسيت كلمه المرور'),
-                  title: 'تسجيل الدخول',
+                return state is SignInWithEmailAndPasswordLoading
+                    ? CircularProgressIndicator()
+                    : CustomFooterWidget(
+                        progress: 1,
+                        trailing: Text('نسيت كلمه المرور'),
+                        title: 'تسجيل الدخول',
 
-                  onTapTrailing: () {
-                    //  context.go(RouterNames.forgetPassword);
-                  },
-                  onTapTitle: () {
-                    if (context
-                        .read<AuthCubit>()
-                        .formKey
-                        .currentState!
-                        .validate()) {
-                      context.read<AuthCubit>().signInWithEmailAndPassword(
-                        context.read<AuthCubit>().emailController.text,
-                        context.read<AuthCubit>().passwordController.text,
+                        onTapTrailing: () {
+                          //  context.go(RouterNames.forgetPassword);
+                        },
+                        onTapTitle: () {
+                          if (context
+                              .read<AuthCubit>()
+                              .formKey
+                              .currentState!
+                              .validate()) {
+                            context
+                                .read<AuthCubit>()
+                                .signInWithEmailAndPassword(
+                                  context
+                                      .read<AuthCubit>()
+                                      .emailController
+                                      .text,
+                                  context
+                                      .read<AuthCubit>()
+                                      .passwordController
+                                      .text,
+                                );
+                          } else {
+                            showToast(
+                              message: 'الرجاء التحقق من البيانات',
+                              state: ToastStates.ERROR,
+                            );
+                          }
+                        },
                       );
-                    } else {
-                      showToast(
-                        message: 'الرجاء التحقق من البيانات',
-                        state: ToastStates.ERROR,
-                      );
-                    }
-                  },
-                );
               },
             ),
           ],
