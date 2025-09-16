@@ -10,7 +10,7 @@ import 'package:sear_soqe/features/auth/presentation/widgets/custom_footer_widge
 
 Future<void> verifyPhoneNumber(context) async {
   await FirebaseAuth.instance.verifyPhoneNumber(
-    phoneNumber: '+201029673915',
+    phoneNumber: '+201004501339',
     verificationCompleted: (PhoneAuthCredential credential) async {
       // إذا تم التحقق بنجاح
       UserCredential userCredential = await FirebaseAuth.instance
@@ -72,6 +72,7 @@ class RegisterWithPhoneComponent extends StatelessWidget {
     return Expanded(
       child: Column(
         children: [
+         
           CustomTextFormField(
             suffixIcon: InkWell(
               onTap: () {
