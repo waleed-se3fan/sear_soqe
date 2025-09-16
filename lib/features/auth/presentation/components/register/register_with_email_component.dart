@@ -20,7 +20,9 @@ class RegisterWithEmailComponent extends StatelessWidget {
       child: Form(
         key: context.read<AuthCubit>().formKey,
         child: Column(
+          
           children: [
+            
             CustomTextFormField(
               validator: (value) {
                 return Validator.validateEmail(value);

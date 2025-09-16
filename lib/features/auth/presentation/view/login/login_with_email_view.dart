@@ -10,7 +10,7 @@ class LoginWithEmailView extends StatelessWidget {
     return const Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 18),
+          padding: EdgeInsets.symmetric(horizontal: 18, vertical: 20),
           child: Column(
             children: [
               CustomAuthHeaderWidget(title: 'تسجيل الدخول بالبريد الالكتروني'),

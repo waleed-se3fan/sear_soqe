@@ -14,7 +14,7 @@ class CreateAccountView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 18.w),
+          padding: EdgeInsets.symmetric(horizontal: 18.w, ),
           child: Column(
             children: [
               CustomAuthHeaderWidget(title: 'ادخل اسمك الكامل'),
