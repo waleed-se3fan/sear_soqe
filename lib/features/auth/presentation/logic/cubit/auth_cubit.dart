@@ -18,7 +18,7 @@ class AuthCubit extends Cubit<AuthState> {
         email,
         password,
       );
-      emit(CreateUserWithEmailAndPasswordSuccess(message!.toString()));
+      emit(CreateUserWithEmailAndPasswordSuccess('تم انشاء الحساب بنجاح'));
     } on Exception catch (e) {
       emit(CreateUserWithEmailAndPasswordError(e.toString()));
     }
@@ -31,7 +31,7 @@ class AuthCubit extends Cubit<AuthState> {
         email,
         password,
       );
-      emit(SignInWithEmailAndPasswordSuccess(message!.toString()));
+      emit(SignInWithEmailAndPasswordSuccess('تم نسجيل الدخول بنجاح'));
     } on Exception catch (e) {
       emit(SignInWithEmailAndPasswordError(e.toString()));
     }

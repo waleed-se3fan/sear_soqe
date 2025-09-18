@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:sear_soqe/core/app_cubit/app_cubit.dart';
 import 'package:sear_soqe/core/routes/router_names.dart';
 import 'package:sear_soqe/features/add_car/presentation/logic/cubit/add_car_cubit.dart';
+import 'package:sear_soqe/features/add_car/presentation/logic/cubit/adding_structure_cubit_dart_cubit.dart';
 import 'package:sear_soqe/features/add_car/presentation/view/add_car_view.dart';
 import 'package:sear_soqe/features/add_car/presentation/view/congratulation_view.dart';
 import 'package:sear_soqe/features/add_car/presentation/view/my_ads_view.dart';
@@ -86,8 +87,13 @@ final GoRouter router = GoRouter(
       path: RouterNames.addCar,
       pageBuilder: (context, state) {
         return CustomTransitionPage(
-          child: BlocProvider(
-            create: (context) => AddCarCubit(),
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => AddCarCubit()),
+              BlocProvider(
+                create: (context) => AddingStructureCubitDartCubit(),
+              ),
+            ],
             child: const AddCarView(),
           ),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {

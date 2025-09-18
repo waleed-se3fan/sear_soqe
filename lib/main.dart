@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sear_soqe/core/data/cached/cache_helper.dart';
 import 'package:sear_soqe/core/routes/app_routers.dart';
-import 'package:sear_soqe/core/services/firestore_database_service.dart';
+import 'package:sear_soqe/core/data/firebase/firestore_database_service.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_core/firebase_core.dart';

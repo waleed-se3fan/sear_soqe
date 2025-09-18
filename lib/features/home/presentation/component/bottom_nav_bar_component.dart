@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:sear_soqe/core/app_cubit/app_cubit.dart';
 import 'package:sear_soqe/core/routes/router_names.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sear_soqe/features/add_car/presentation/logic/cubit/add_car_cubit.dart';
 import 'package:sear_soqe/features/home/presentation/widgets/bottom_nav_bar_widget.dart';
 
 class BottomNavBarComponent extends StatelessWidget {
@@ -52,6 +53,7 @@ class BottomNavBarComponent extends StatelessWidget {
             InkWell(
               onTap: () {
                 context.go(RouterNames.addCar);
+                AddCarCubit.createDocRef();
               },
               child: SvgPicture.asset(
                 'assets/images/add_car.svg',

@@ -2,7 +2,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sear_soqe/core/common/widgets/custom_text_form_field.dart';
-import 'package:sear_soqe/core/services/firestore_database_service.dart';
+import 'package:sear_soqe/core/data/firebase/firestore_database_service.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -72,7 +72,6 @@ class RegisterWithPhoneComponent extends StatelessWidget {
     return Expanded(
       child: Column(
         children: [
-         
           CustomTextFormField(
             suffixIcon: InkWell(
               onTap: () {

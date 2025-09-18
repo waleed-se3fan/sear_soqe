@@ -10,8 +10,11 @@ import 'package:sear_soqe/core/routes/router_names.dart';
 import 'package:sear_soqe/core/services/image_picker_service.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:sear_soqe/core/utils/app_styles.dart';
+import 'package:sear_soqe/features/add_car/presentation/components/add_car_by_city_component.dart';
+import 'package:sear_soqe/features/add_car/presentation/components/add_car_by_country_component.dart';
 import 'package:sear_soqe/features/add_car/presentation/logic/cubit/add_car_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sear_soqe/features/add_car/presentation/logic/cubit/adding_structure_cubit_dart_cubit.dart';
 import 'package:sear_soqe/features/home/presentation/widgets/category_widget.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -30,14 +33,17 @@ class AddCarView extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
           ),
-          BlocBuilder<AddCarCubit, AddCarState>(
+          BlocBuilder<
+            AddingStructureCubitDartCubit,
+            AddingStructureCubitDartState
+          >(
             builder: (context, state) {
               if (state is ChangeIndex) {
                 print(state.index);
                 if (state.index == 0) {
-                  return AddCarByCityComponent();
+                  return AddCarByCountryComponent();
                 } else if (state.index == 1) {
-                  return AddCarByRegionComponent();
+                  return AddCarByCityComponent();
                 } else if (state.index == 2) {
                   return AddCarByTypeComponent();
                 } else if (state.index == 3) {
@@ -64,7 +70,7 @@ class AddCarView extends StatelessWidget {
                   return AddCarByAddingVedioComponent();
                 }
               }
-              return AddCarByCityComponent();
+              return AddCarByCountryComponent();
             },
           ),
         ],
@@ -108,7 +114,13 @@ class AddCarTitle extends StatelessWidget {
 class AddCarFooter extends StatelessWidget {
   final double progress;
   final int index;
-  const AddCarFooter({super.key, required this.progress, required this.index});
+  final Function? onTitlePressed;
+  const AddCarFooter({
+    super.key,
+    required this.progress,
+    required this.index,
+    this.onTitlePressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -127,10 +139,17 @@ class AddCarFooter extends StatelessWidget {
               children: [
                 TextButton.icon(
                   onPressed: () {
-                    if (index == 14) {
-                      context.go(RouterNames.congratulation);
+                    if (onTitlePressed == null) {
+                      onTitlePressed!();
+                    } else {
+                      if (index == 14) {
+                        context.go(RouterNames.congratulation);
+                      } else {
+                        context
+                            .read<AddingStructureCubitDartCubit>()
+                            .changeIndex(index);
+                      }
                     }
-                    context.read<AddCarCubit>().changeIndex(index);
                   },
                   icon: Text('التالي'),
                   label: Icon(Icons.arrow_forward),
@@ -141,7 +160,9 @@ class AddCarFooter extends StatelessWidget {
                 Spacer(),
                 TextButton(
                   onPressed: () {
-                    context.read<AddCarCubit>().changeIndex(index - 2);
+                    context.read<AddingStructureCubitDartCubit>().changeIndex(
+                      index - 2,
+                    );
                   },
                   style: TextButton.styleFrom(
                     foregroundColor: AppColors.textColor,
@@ -182,122 +203,8 @@ class AddCarBody extends StatelessWidget {
   }
 }
 
-class AddCarByCityComponent extends StatelessWidget {
-  const AddCarByCityComponent({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        AddCarTitle(title: 'فى اى مدينة توجد سيارتك ؟'),
-
-        AddCarBody(
-          widget: Column(
-            children: [
-              SizedBox(height: 10.h),
-              CustomTextFormField(
-                hintText: 'ابحث عن مدينة توجد سيارتك',
-                suffixIcon: Icon(CupertinoIcons.search),
-              ),
-              SizedBox(
-                height: 400,
-                child: ListView.builder(
-                  itemCount: 10,
-                  itemExtent: 70,
-                  itemBuilder: (c, i) {
-                    return Card(
-                      color: AppColors.white,
-
-                      child: Row(
-                        children: [
-                          SizedBox(width: 10),
-                          Text('الرياض'),
-                          Spacer(),
-                          SvgPicture.asset(
-                            'assets/images/logo.svg',
-                            width: 24.w,
-                            height: 24.h,
-                          ),
-                          SizedBox(width: 10),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-        AddCarFooter(progress: .05, index: 1),
-      ],
-    );
-  }
-}
-
-class AddCarByRegionComponent extends StatelessWidget {
-  const AddCarByRegionComponent({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        AddCarTitle(title: 'فى اى منطقة توجد سيارتك ؟'),
-        AddCarBody(
-          widget: Column(
-            children: [
-              CustomTextFormField(
-                hintText: 'ابحث عن منطقة توجد سيارتك',
-                suffixIcon: Image.asset(
-                  'assets/images/edit.png',
-                  height: 20,
-                  width: 20,
-                ),
-                fillColor: AppColors.fillGrey,
-              ),
-              SizedBox(height: 14.h),
-              CustomTextFormField(
-                hintText: 'ابحث عن مدينة توجد سيارتك',
-                suffixIcon: Icon(CupertinoIcons.search),
-                //  fillColor: AppColors.fillGrey,
-              ),
-
-              SizedBox(
-                height: 300,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 10,
-                  itemExtent: 70,
-                  itemBuilder: (c, i) {
-                    return Card(
-                      color: AppColors.white,
-                      child: Row(
-                        children: [
-                          SizedBox(width: 10),
-                          Text('الرياض'),
-                          Spacer(),
-                          Icon(Icons.arrow_forward_ios, size: 18),
-                          SizedBox(width: 10),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-
-        AddCarFooter(progress: .1, index: 2),
-      ],
-    );
-  }
-}
-
 class AddCarByTypeComponent extends StatelessWidget {
   const AddCarByTypeComponent({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Column(
