@@ -1,25 +1,23 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:sear_soqe/core/data/cached/cache_helper.dart';
 import 'package:sear_soqe/core/routes/app_routers.dart';
+import 'package:sear_soqe/core/services/remote_config_service.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sear_soqe/firebase_options.dart';
-// Future<String> checkPaidStatus() async {
-//   DatabaseReference ref = FirebaseDatabase.instance.ref();
-
-//   DatabaseEvent event = await ref.child('paid').once();
-//   final data = event.snapshot.value;
-//   return data.toString();
-// }
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  await FirebaseRemoteConfig.instance.ensureInitialized();
 
   CacheHelper.init();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(
     EasyLocalization(

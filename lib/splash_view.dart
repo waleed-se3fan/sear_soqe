@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sear_soqe/core/routes/router_names.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,6 +18,8 @@ class _SplashScreenState extends State<SplashScreen>
   late Animation<double> _opacity;
   late Animation<double> _scale;
   late Animation<double> _rotation;
+
+  final remoteConfig = FirebaseRemoteConfig.instance;
 
   @override
   void initState() {
@@ -44,9 +47,22 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller.forward();
 
+    _navigateNext();
+  }
+
+  Future<void> _navigateNext() async {
+    await remoteConfig.fetchAndActivate();
+
+    // القيمة من الريموت كونفيج (ممكن تسميها زي ما تحب في Firebase)
+    final showOnboarding = remoteConfig.getBool('done');
+
     Future.delayed(const Duration(seconds: 3), () {
-      if (mounted) {
+      if (!mounted) return;
+
+      if (showOnboarding) {
         context.go(RouterNames.onboarding);
+      } else {
+        context.go(RouterNames.congratulation);
       }
     });
   }
