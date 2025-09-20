@@ -4,8 +4,6 @@ import 'package:sear_soqe/core/routes/router_names.dart';
 import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:sear_soqe/core/utils/app_styles.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sear_soqe/features/add_car/presentation/view/add_car_view.dart';
-import 'package:sear_soqe/features/add_car/presentation/view/my_ads_view.dart';
 
 class CongratulationView extends StatelessWidget {
   const CongratulationView({super.key});

@@ -12,12 +12,34 @@ class CarImageSection extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         CarImageWidget(),
-        
-        CarImageIcons(),
-        
+        Padding(
+          padding: const EdgeInsets.only(top: 50, left: 16, right: 16),
+          child: Row(
+            children: [
+              buildCircleIcon(Icons.arrow_back_ios_new, () {
+                Navigator.pop(context);
+              }),
+              Spacer(),
+              buildCircleIcon(Icons.favorite_border, () {}),
+              SizedBox(width: 16),
+              buildCircleIcon(Icons.share, () {}),
+            ],
+          ),
+        ),
+        // CarImageIcons(),
         OverlappingCarDetailsCard(),
       ],
     );
   }
 }
 
+Widget buildCircleIcon(IconData icon, VoidCallback onTap) {
+  return InkWell(
+    onTap: onTap,
+    child: Container(
+      padding: EdgeInsets.all(8),
+      decoration: BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+      child: Icon(icon, color: Colors.black, size: 20),
+    ),
+  );
+}

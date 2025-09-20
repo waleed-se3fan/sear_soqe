@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sear_soqe/core/routes/router_names.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:sear_soqe/core/theme/app_colors.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -89,9 +89,13 @@ class _SplashScreenState extends State<SplashScreen>
             );
           },
           child: SvgPicture.asset(
-            'assets/images/splash.svg',
+            'assets/images/home_logo.svg',
             width: 141.w,
             height: 131.h,
+            colorFilter: ColorFilter.mode(
+              AppColors.primaryColor,
+              BlendMode.srcIn,
+            ),
           ),
         ),
       ),

@@ -6,13 +6,15 @@ import 'app_styles.dart';
 
 AppBar customAppBar(BuildContext context, String title) {
     return AppBar(
+    
       backgroundColor: Colors.white,
       elevation: 1,
       centerTitle: true,
+    
       actions: [
         IconButton(
           icon:
-              const Icon(Icons.arrow_forward_ios, color: AppColors.greyText),
+              const Icon(Icons.arrow_forward_ios, color: AppColors.greyText, ),
           onPressed: () => context.pop(context),
         ),
       ],

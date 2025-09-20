@@ -39,7 +39,6 @@ class HomeView extends StatelessWidget {
                     const SizedBox(height: 8),
 
                     const CountrySearchComponent(),
-
                     CustomTextFormField(
                       hintText: 'ابحث عن سيارات مستعملة هنا ..',
                       suffixIcon: Icon(CupertinoIcons.search),
