@@ -25,6 +25,7 @@ class _AddCarByCountryComponentState extends State<AddCarByCountryComponent> {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.watch<AddCarCubit>();
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,10 +57,22 @@ class _AddCarByCountryComponentState extends State<AddCarByCountryComponent> {
                       return Center(child: Text(state.message));
                     }
                     if (state is SearchState) {
-                      return CustomItemsWidget(cities: state.cities);
+                      return CustomItemsWidget(
+                        cities: state.cities,
+                        selectedCity: cubit.selectedCountry,
+                        // onTap: () {
+                        //   cubit.selectCountry(cubit.selectedCountry!);
+                        // },
+                      );
                     }
                     return CustomItemsWidget(
                       cities: context.read<AddCarCubit>().countries,
+                      selectedCity: cubit.selectedCountry,
+                      // onTap: () {
+                      //   print(cubit.selectedCountry);
+
+                      //   // cubit.selectCountry(cubit.selectedCountry!);
+                      // },
                     );
                   },
                 ),

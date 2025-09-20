@@ -13,7 +13,7 @@ class AddCarCubit extends Cubit<AddCarState> {
   List<String> searchCities = [];
 
   String? selectedCity;
-  // String? selectedCountry;
+  String? selectedCountry;
 
   void search(String query, List<String> list) {
     if (query.isEmpty) {
@@ -26,10 +26,25 @@ class AddCarCubit extends Cubit<AddCarState> {
     emit(SearchState(cities: searchCities));
   }
 
-  void selectCity(String city) {
-    selectedCity = city;
-    emit(SelectCity(city: city));
+  choise(String choice) {
+    if (countries.contains(choice)) {
+      selectedCountry = choice;
+      emit(SelectCountry(country: choice));
+    } else if (cities.contains(choice)) {
+      selectedCity = choice;
+      emit(SelectCity(city: choice));
+    }
   }
+
+  // selectCountry(String country) {
+  //   selectedCountry = country;
+  //   emit(SelectCountry(country: country));
+  // }
+
+  // void selectCity(String city) {
+  //   selectedCity = city;
+  //   emit(SelectCity(city: city));
+  // }
 
   getAllCountries() async {
     emit(GetAllCountriesLoading());

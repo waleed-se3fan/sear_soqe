@@ -27,6 +27,15 @@ final class SelectCity extends AddCarState {
   List<Object> get props => [city];
 }
 
+final class SelectCountry extends AddCarState {
+  final String country;
+
+  const SelectCountry({required this.country});
+
+  @override
+  List<Object> get props => [country];
+}
+
 final class GetAllCountriesLoading extends AddCarState {}
 
 final class GetAllCountriesSuccess extends AddCarState {

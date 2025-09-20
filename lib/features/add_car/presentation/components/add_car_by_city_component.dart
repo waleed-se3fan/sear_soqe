@@ -21,12 +21,13 @@ class _AddCarByCityComponentState extends State<AddCarByCityComponent> {
   void initState() {
     super.initState();
     context.read<AddCarCubit>().getAllCities(
-      context.read<AddCarCubit>().selectedCity!,
+      context.read<AddCarCubit>().selectedCountry!,
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.watch<AddCarCubit>();
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -36,7 +37,7 @@ class _AddCarByCityComponentState extends State<AddCarByCityComponent> {
           widget: Column(
             children: [
               CustomTextFormField(
-                hintText: context.read<AddCarCubit>().selectedCity,
+                hintText: cubit.selectedCountry!,
                 suffixIcon: Image.asset(
                   'assets/images/edit.png',
                   height: 20,
@@ -66,10 +67,20 @@ class _AddCarByCityComponentState extends State<AddCarByCityComponent> {
                       return Center(child: Text(state.message));
                     }
                     if (state is SearchState) {
-                      return CustomItemsWidget(cities: state.cities);
+                      return CustomItemsWidget(
+                        cities: state.cities,
+                        selectedCity: cubit.selectedCity,
+                        // onTap: () {
+                        //   cubit.selectCity(cubit.selectedCity!);
+                        // },
+                      );
                     }
                     return CustomItemsWidget(
                       cities: context.read<AddCarCubit>().cities,
+                      selectedCity: cubit.selectedCity,
+                      // onTap: () {
+                      //   cubit.selectCity(cubit.selectedCity!);
+                      // },
                     );
                   },
                 ),

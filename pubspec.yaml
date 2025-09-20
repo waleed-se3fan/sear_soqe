@@ -54,6 +54,8 @@ dependencies:
   firebase_database: 
   image_picker: ^1.2.0
   easy_localization: ^3.0.8
+  cloud_firestore: ^6.0.1
+  firebase_auth: ^6.0.2
 
 dev_dependencies:
   flutter_test:

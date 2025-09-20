@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen>
   late Animation<double> _scale;
   late Animation<double> _rotation;
 
-  final remoteConfig = FirebaseRemoteConfig.instance;
+  //final remoteConfig = FirebaseRemoteConfig.instance;
 
   @override
   void initState() {
@@ -51,19 +51,10 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Future<void> _navigateNext() async {
-    await remoteConfig.fetchAndActivate();
-
-    // القيمة من الريموت كونفيج (ممكن تسميها زي ما تحب في Firebase)
-    final showOnboarding = remoteConfig.getBool('done');
-
     Future.delayed(const Duration(seconds: 3), () {
       if (!mounted) return;
 
-      if (showOnboarding) {
-        context.go(RouterNames.onboarding);
-      } else {
-        context.go(RouterNames.congratulation);
-      }
+      context.go(RouterNames.onboarding);
     });
   }
 

@@ -5,9 +5,14 @@ import 'package:sear_soqe/core/theme/app_colors.dart';
 import 'package:sear_soqe/features/add_car/presentation/logic/cubit/add_car_cubit.dart';
 
 class CustomItemsWidget extends StatelessWidget {
-  const CustomItemsWidget({super.key, required this.cities});
+  const CustomItemsWidget({
+    super.key,
+    required this.cities,
+    required this.selectedCity,
+  });
 
   final List<String> cities;
+  final String? selectedCity;
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +25,10 @@ class CustomItemsWidget extends StatelessWidget {
         final city = cities[i];
 
         return Card(
-          color: cubit.selectedCity == city
-              ? AppColors.primary
-              : AppColors.white,
+          color: selectedCity == city ? AppColors.primary : AppColors.white,
           child: InkWell(
             onTap: () {
-              cubit.selectCity(city);
+              cubit.choise(city);
             },
             child: Row(
               children: [
@@ -33,10 +36,8 @@ class CustomItemsWidget extends StatelessWidget {
                 Text(
                   city,
                   style: TextStyle(
-                    color: cubit.selectedCity == city
-                        ? Colors.white
-                        : Colors.black,
-                    fontWeight: cubit.selectedCity == city
+                    color: selectedCity == city ? Colors.white : Colors.black,
+                    fontWeight: selectedCity == city
                         ? FontWeight.bold
                         : FontWeight.normal,
                   ),
